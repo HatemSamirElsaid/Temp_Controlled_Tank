@@ -1,0 +1,18 @@
+#include "LED.h"
+
+
+void LED_Init(void){
+    DIO_WRITE_STATUS(LED1_PORT, LED1_PIN, OTUPUT);
+}
+
+void LED_ON(void){
+	DIO_SET_PIN(LED1_PORT, LED1_PIN);
+}
+
+void LED_OFF(void){
+	DIO_CLEAR_PIN(LED1_PORT, LED1_PIN);
+}
+
+void LED_TOGGLE(void){
+    DIO_TOGGLE_PIN(LED1_PORT, LED1_PIN);
+}
