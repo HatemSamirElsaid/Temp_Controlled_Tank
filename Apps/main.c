@@ -75,6 +75,7 @@ int main (){
 			Heater_OFF();
 			Cooler_OFF();
 			SSD_Stop();
+			Mode = Temp_Control;
 			continue;
 		}
 
@@ -115,6 +116,7 @@ int main (){
 			SSD_DisplayNumber(Des_Temp);
 			LED_ON();
 		}else{
+			SSD_Stop();
 			LED_OFF();
 		}
 

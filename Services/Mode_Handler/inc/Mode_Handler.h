@@ -2,7 +2,7 @@
  * Mode_Handler.h
  *
  *  Created on: Jan 16, 2022
- *      Author: htmsa
+ *      Author: HatemSamir
  */
 
 #ifndef SERVICES_MODE_HANDLER_INC_MODE_HANDLER_H_
@@ -11,7 +11,7 @@
 #include "Std_Types.h"
 #include <avr/interrupt.h>
 #include "Mode_Handler_Types.h"
-//#include "Timer1_Module.h"
+#include "Timer1.h"
 
 volatile Mode_ID Mode;
 

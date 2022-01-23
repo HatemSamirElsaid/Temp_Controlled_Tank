@@ -2,7 +2,7 @@
  * Timer1.h
  *
  *  Created on: Jan 5, 2022
- *      Author: Queen
+ *      Author: Marina
  */
 
 #ifndef _TIMER1_H_

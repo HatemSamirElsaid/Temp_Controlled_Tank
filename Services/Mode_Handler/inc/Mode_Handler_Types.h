@@ -2,7 +2,7 @@
  * Mode_Handler_Types.h
  *
  *  Created on: Jan 16, 2022
- *      Author: htmsa
+ *      Author: HatemSamir
  */
 
 #ifndef SERVICES_MODE_HANDLER_INC_MODE_HANDLER_TYPES_H_

@@ -3,7 +3,7 @@
 
  *
  *  Created on: Jan 5, 2022
- *      Author: Queen
+ *      Author: Marina
  */
 
 #include "Timer1.h"

@@ -2,7 +2,7 @@
  * Timer1_Std_Types.h
  *
  *  Created on: Jan 17, 2022
- *      Author: Queen
+ *      Author: Marina
  */
 
 #ifndef _TIMER1_STD_TYPES_H_
