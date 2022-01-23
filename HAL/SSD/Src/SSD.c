@@ -7,7 +7,7 @@
 
 #include "SSD.h"
 
-static u32 Counter =0;
+static u8 Counter =0;
 
 void SSD_Init(void)
 {
@@ -27,14 +27,13 @@ void SSD_DisplayNumber(u8 num)
 	u8 loc_FirstDigit = (num/10)<<4;
 	u8 loc_Second_Digit = (num%10)<<4;
 
-	if(Counter < (2^31/2)){
+	if(Counter < (((2^8)-1)/2)){
 		/*	Enable SSD1	*/
 		DIO_SET_PIN(DIO_PORTB, DIO_PIN2);
 		/*	Disable SSD2	*/
 		DIO_CLEAR_PIN(DIO_PORTB, DIO_PIN1);
 		/*	Write Number To SSD	*/
 		Dio_WriteGroup(DIO_PORTA,SSD_MASK,loc_FirstDigit);
-		/*	wait(1m)	*/
 	}else{
 		/*	Disable SSD1	*/
 		DIO_CLEAR_PIN(DIO_PORTB, DIO_PIN2);
@@ -42,10 +41,9 @@ void SSD_DisplayNumber(u8 num)
 		DIO_SET_PIN(DIO_PORTB, DIO_PIN1);
 		/*	Write Number To SSD	*/
 		Dio_WriteGroup(DIO_PORTA,SSD_MASK,loc_Second_Digit);
-		/*	wait(1m)	*/
 	}
 	Counter++;
-	if(Counter==(2^32)){
+	if(Counter==((2^8)-1)){
 		Counter = 0;
 	}
 }

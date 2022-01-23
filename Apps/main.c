@@ -5,7 +5,6 @@
 #include "Lib.h"
 #include "Main_Types.h"
 #include "Services.h"
-//#include "util/delay.h"
 
 
 int main (){
@@ -94,9 +93,13 @@ int main (){
 				Mode = Temp_Set;
 
 				if(Button_READ(BUTTON0)){
-					Des_Temp +=5;
+					if(Des_Temp<Max_Temp){
+						Des_Temp +=5;
+					}
 				}else{
-					Des_Temp -=5;
+					if(Des_Temp>Min_Temp){
+						Des_Temp -=5;
+					}
 				}
 				Store_Temp();
 

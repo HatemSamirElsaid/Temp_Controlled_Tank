@@ -144,7 +144,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x172e
+.text           0x00000000     0x16f2
  *(.vectors)
  .vectors       0x00000000       0x54 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -346,63 +346,63 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x000011d8       0x4a ./HAL/SSD/Src/SSD.o
                 0x000011d8                SSD_Init
  .text.SSD_DisplayNumber
-                0x00001222       0xdc ./HAL/SSD/Src/SSD.o
+                0x00001222       0x90 ./HAL/SSD/Src/SSD.o
                 0x00001222                SSD_DisplayNumber
  .text.SSD_Stop
-                0x000012fe       0x1e ./HAL/SSD/Src/SSD.o
-                0x000012fe                SSD_Stop
+                0x000012b2       0x1e ./HAL/SSD/Src/SSD.o
+                0x000012b2                SSD_Stop
  .text.LED_Init
-                0x0000131c       0x18 ./HAL/LED_Module/Src/LED.o
-                0x0000131c                LED_Init
- .text.LED_ON   0x00001334       0x16 ./HAL/LED_Module/Src/LED.o
-                0x00001334                LED_ON
- .text.LED_OFF  0x0000134a       0x16 ./HAL/LED_Module/Src/LED.o
-                0x0000134a                LED_OFF
+                0x000012d0       0x18 ./HAL/LED_Module/Src/LED.o
+                0x000012d0                LED_Init
+ .text.LED_ON   0x000012e8       0x16 ./HAL/LED_Module/Src/LED.o
+                0x000012e8                LED_ON
+ .text.LED_OFF  0x000012fe       0x16 ./HAL/LED_Module/Src/LED.o
+                0x000012fe                LED_OFF
  .text.LED_TOGGLE
-                0x00001360       0x16 ./HAL/LED_Module/Src/LED.o
-                0x00001360                LED_TOGGLE
+                0x00001314       0x16 ./HAL/LED_Module/Src/LED.o
+                0x00001314                LED_TOGGLE
  .text.Heater_Init
-                0x00001376       0x18 ./HAL/Heater_Module/src/Heater.o
-                0x00001376                Heater_Init
+                0x0000132a       0x18 ./HAL/Heater_Module/src/Heater.o
+                0x0000132a                Heater_Init
  .text.Heater_ON
-                0x0000138e       0x16 ./HAL/Heater_Module/src/Heater.o
-                0x0000138e                Heater_ON
+                0x00001342       0x16 ./HAL/Heater_Module/src/Heater.o
+                0x00001342                Heater_ON
  .text.Heater_OFF
-                0x000013a4       0x1a ./HAL/Heater_Module/src/Heater.o
-                0x000013a4                Heater_OFF
+                0x00001358       0x1a ./HAL/Heater_Module/src/Heater.o
+                0x00001358                Heater_OFF
  .text.Cooler_Init
-                0x000013be       0x18 ./HAL/Cooler_Module/src/Cooler.o
-                0x000013be                Cooler_Init
+                0x00001372       0x18 ./HAL/Cooler_Module/src/Cooler.o
+                0x00001372                Cooler_Init
  .text.Cooler_ON
-                0x000013d6       0x1a ./HAL/Cooler_Module/src/Cooler.o
-                0x000013d6                Cooler_ON
+                0x0000138a       0x1a ./HAL/Cooler_Module/src/Cooler.o
+                0x0000138a                Cooler_ON
  .text.Cooler_OFF
-                0x000013f0       0x1a ./HAL/Cooler_Module/src/Cooler.o
-                0x000013f0                Cooler_OFF
+                0x000013a4       0x1a ./HAL/Cooler_Module/src/Cooler.o
+                0x000013a4                Cooler_OFF
  .text.Button_Init
-                0x0000140a       0x62 ./HAL/Button_Module/Src/Button.o
-                0x0000140a                Button_Init
+                0x000013be       0x62 ./HAL/Button_Module/Src/Button.o
+                0x000013be                Button_Init
  .text.Button_READ
-                0x0000146c       0x66 ./HAL/Button_Module/Src/Button.o
-                0x0000146c                Button_READ
+                0x00001420       0x66 ./HAL/Button_Module/Src/Button.o
+                0x00001420                Button_READ
  .text.Button_Pullup_Enable
-                0x000014d2       0x5c ./HAL/Button_Module/Src/Button.o
-                0x000014d2                Button_Pullup_Enable
+                0x00001486       0x5c ./HAL/Button_Module/Src/Button.o
+                0x00001486                Button_Pullup_Enable
  .text.Button_Pullup_Disable
-                0x0000152e       0x5c ./HAL/Button_Module/Src/Button.o
-                0x0000152e                Button_Pullup_Disable
- .text.main     0x0000158a      0x188 ./Apps/main.o
-                0x0000158a                main
- .text.libgcc   0x00001712       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
-                0x00001712                __udivmodqi4
- .text.libgcc   0x0000172a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x0000172a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x0000172a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x0000172a                . = ALIGN (0x2)
+                0x000014e2       0x5c ./HAL/Button_Module/Src/Button.o
+                0x000014e2                Button_Pullup_Disable
+ .text.main     0x0000153e      0x198 ./Apps/main.o
+                0x0000153e                main
+ .text.libgcc   0x000016d6       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                0x000016d6                __udivmodqi4
+ .text.libgcc   0x000016ee        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x000016ee        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x000016ee        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x000016ee                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000172a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x0000172a                exit
-                0x0000172a                _exit
+ .fini9         0x000016ee        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000016ee                exit
+                0x000016ee                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -421,11 +421,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000172a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x000016ee        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000172e                _etext = .
+                0x000016f2                _etext = .
 
-.data           0x00800060        0x2 load address 0x0000172e
+.data           0x00800060        0x2 load address 0x000016f2
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -460,7 +460,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800062                _edata = .
                 0x00800062                PROVIDE (__data_end, .)
 
-.bss            0x00800062       0x11
+.bss            0x00800062        0xe
                 0x00800062                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -489,28 +489,28 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .bss.Counter   0x00800062        0x1 ./Services/Update_Temp/src/Update_Temp.o
  .bss.Temp_arr  0x00800063        0x5 ./Services/Update_Temp/src/Update_Temp.o
  .bss.Counter   0x00800068        0x1 ./Services/Debounce_Handler/src/Debounce_Handler.o
- .bss.Counter   0x00800069        0x4 ./HAL/SSD/Src/SSD.o
+ .bss.Counter   0x00800069        0x1 ./HAL/SSD/Src/SSD.o
  *(COMMON)
- COMMON         0x0080006d        0x3 ./Services/Update_Temp/src/Update_Temp.o
-                0x0080006d                Blink_Status
-                0x0080006e                Curr_Temp
-                0x0080006f                Update_Temp_En
- COMMON         0x00800070        0x1 ./Services/Restore_Temp/src/Restore_Temp.o
-                0x00800070                Des_Temp
- COMMON         0x00800071        0x1 ./Services/Mode_Handler/src/Mode_Handler.o
-                0x00800071                Mode
- COMMON         0x00800072        0x1 ./Services/Debounce_Handler/src/Debounce_Handler.o
-                0x00800072                ButtonEnable
-                0x00800073                PROVIDE (__bss_end, .)
-                0x0000172e                __data_load_start = LOADADDR (.data)
-                0x00001730                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0080006a        0x3 ./Services/Update_Temp/src/Update_Temp.o
+                0x0080006a                Blink_Status
+                0x0080006b                Curr_Temp
+                0x0080006c                Update_Temp_En
+ COMMON         0x0080006d        0x1 ./Services/Restore_Temp/src/Restore_Temp.o
+                0x0080006d                Des_Temp
+ COMMON         0x0080006e        0x1 ./Services/Mode_Handler/src/Mode_Handler.o
+                0x0080006e                Mode
+ COMMON         0x0080006f        0x1 ./Services/Debounce_Handler/src/Debounce_Handler.o
+                0x0080006f                ButtonEnable
+                0x00800070                PROVIDE (__bss_end, .)
+                0x000016f2                __data_load_start = LOADADDR (.data)
+                0x000016f4                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800073        0x0
-                0x00800073                PROVIDE (__noinit_start, .)
+.noinit         0x00800070        0x0
+                0x00800070                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800073                PROVIDE (__noinit_end, .)
-                0x00800073                _end = .
-                0x00800073                PROVIDE (__heap_start, .)
+                0x00800070                PROVIDE (__noinit_end, .)
+                0x00800070                _end = .
+                0x00800070                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -528,7 +528,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x2de4
+.stab           0x00000000     0x2dfc
  *(.stab)
  .stab          0x00000000      0x630 ./Services/Update_Temp/src/Update_Temp.o
  .stab          0x00000630      0x120 ./Services/Store_Temp/src/Store_Temp.o
@@ -561,12 +561,12 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                                 0x2c4 (size before relaxing)
  .stab          0x00002598      0x30c ./HAL/Button_Module/Src/Button.o
                                 0x414 (size before relaxing)
- .stab          0x000028a4      0x540 ./Apps/main.o
-                                0x918 (size before relaxing)
+ .stab          0x000028a4      0x558 ./Apps/main.o
+                                0x930 (size before relaxing)
 
-.stabstr        0x00000000     0x1b9d
+.stabstr        0x00000000     0x1b8e
  *(.stabstr)
- .stabstr       0x00000000     0x1b9d ./Services/Update_Temp/src/Update_Temp.o
+ .stabstr       0x00000000     0x1b8e ./Services/Update_Temp/src/Update_Temp.o
 
 .stab.excl
  *(.stab.excl)
