@@ -1,7 +1,7 @@
 #include "Heater.h"
 
 void Heater_Init(){
-	DIO_WRITE_STATUS(Heater_Port, Heater_Pin, OTUPUT);
+	DIO_WRITE_STATUS(Heater_Port, Heater_Pin, OUTPUT);
 }
 
 void Heater_ON(){

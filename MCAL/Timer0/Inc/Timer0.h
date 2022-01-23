@@ -2,7 +2,7 @@
  * Timer0.h
  *
  *  Created on: Dec 25, 2021
- *      Author: Queen
+ *      Author: Marina
  */
 
 #ifndef _TIMER0_H_

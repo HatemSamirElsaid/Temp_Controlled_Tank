@@ -2,7 +2,7 @@
  * Timer0_Reg.h
  *
  *  Created on: Dec 25, 2021
- *      Author: Hatem Samir
+ *      Author: Marina
  */
 
 #ifndef _TIMER0_REG_H_

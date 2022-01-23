@@ -19,7 +19,7 @@ RM := rm -rf
 -include MCAL/Global_Inerrupt/Src/subdir.mk
 -include MCAL/EXTRN_ISR_Module/Src/subdir.mk
 -include MCAL/DIO_Module/Src/subdir.mk
--include HAL/SSD_Module/Src/subdir.mk
+-include HAL/SSD/Src/subdir.mk
 -include HAL/LED_Module/Src/subdir.mk
 -include HAL/Heater_Module/src/subdir.mk
 -include HAL/Cooler_Module/src/subdir.mk

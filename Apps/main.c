@@ -18,7 +18,7 @@ int main (){
 	Heater_Init();
 	Cooler_Init();
 	//	TempSen_Init();
-	//	SSD_Init();
+	SSD_Init();
 	Button_Init(BUTTON0);
 	Button_Init(BUTTON1);
 	Button_Init(BUTTON2);
@@ -51,7 +51,16 @@ int main (){
 			Update_Temp();
 		}*/
 
+		/*//Test EEPROM module and Restore Service
+		if (Des_Temp==60){
+			LED_ON();
+		}
+		else{
+			LED_OFF();
+		}*/
 
+		/*//SSD Test
+		SSD_DisplayNumber(54);*/
 
 
 		/*-------------------------------System ON/OFF Control Section----------------------------------------------*/
@@ -66,6 +75,7 @@ int main (){
 		if(SystemStatus==OFF){
 			Heater_OFF();
 			Cooler_OFF();
+			SSD_Stop();
 			continue;
 		}
 
@@ -97,9 +107,9 @@ int main (){
 		/*-------------------------------Seven Segments Display Control Section-------------------------------------*/
 
 		if(Mode==Temp_Control){
-			//SSD_Display(Des_Temp);
+			SSD_DisplayNumber(Curr_Temp);
 		}else if(Mode==Temp_Set && Blink_Status==TRUE){
-			//SSD_Display(Curr_Temp);
+			SSD_DisplayNumber(Des_Temp);
 			LED_ON();
 		}else{
 			LED_OFF();
@@ -120,6 +130,7 @@ int main (){
 			Cooler_OFF();
 			Heater_OFF();
 		}
+
 	}
 
 

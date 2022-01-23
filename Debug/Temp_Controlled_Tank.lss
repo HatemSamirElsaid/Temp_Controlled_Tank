@@ -3,15 +3,15 @@ Temp_Controlled_Tank.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000014f0  00000000  00000000  00000094  2**1
+  0 .text         0000172e  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000002  00800060  000014f0  00001584  2**0
+  1 .data         00000002  00800060  0000172e  000017c2  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000000d  00800062  00800062  00001586  2**0
+  2 .bss          00000011  00800062  00800062  000017c4  2**0
                   ALLOC
-  3 .stab         00002b50  00000000  00000000  00001588  2**2
+  3 .stab         00002de4  00000000  00000000  000017c4  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00001ac1  00000000  00000000  000040d8  2**0
+  4 .stabstr      00001b9d  00000000  00000000  000045a8  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -51,8 +51,8 @@ Disassembly of section .text:
       60:	10 e0       	ldi	r17, 0x00	; 0
       62:	a0 e6       	ldi	r26, 0x60	; 96
       64:	b0 e0       	ldi	r27, 0x00	; 0
-      66:	e0 ef       	ldi	r30, 0xF0	; 240
-      68:	f4 e1       	ldi	r31, 0x14	; 20
+      66:	ee e2       	ldi	r30, 0x2E	; 46
+      68:	f7 e1       	ldi	r31, 0x17	; 23
       6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
 0000006c <.do_copy_data_loop>:
@@ -74,11 +74,11 @@ Disassembly of section .text:
       7e:	1d 92       	st	X+, r1
 
 00000080 <.do_clear_bss_start>:
-      80:	af 36       	cpi	r26, 0x6F	; 111
+      80:	a3 37       	cpi	r26, 0x73	; 115
       82:	b1 07       	cpc	r27, r17
       84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
-      86:	0e 94 b3 09 	call	0x1366	; 0x1366 <main>
-      8a:	0c 94 76 0a 	jmp	0x14ec	; 0x14ec <_exit>
+      86:	0e 94 c5 0a 	call	0x158a	; 0x158a <main>
+      8a:	0c 94 95 0b 	jmp	0x172a	; 0x172a <_exit>
 
 0000008e <__bad_interrupt>:
       8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -95,7 +95,7 @@ Disassembly of section .text:
       a2:	cd b7       	in	r28, 0x3d	; 61
       a4:	de b7       	in	r29, 0x3e	; 62
       a6:	81 e0       	ldi	r24, 0x01	; 1
-      a8:	80 93 6b 00 	sts	0x006B, r24
+      a8:	80 93 6f 00 	sts	0x006F, r24
       ac:	cf 91       	pop	r28
       ae:	df 91       	pop	r29
       b0:	8f 91       	pop	r24
@@ -156,7 +156,7 @@ static u8 Calc_Average(){
       f6:	8b 81       	ldd	r24, Y+3	; 0x03
       f8:	95 e0       	ldi	r25, 0x05	; 5
       fa:	69 2f       	mov	r22, r25
-      fc:	0e 94 6a 0a 	call	0x14d4	; 0x14d4 <__udivmodqi4>
+      fc:	0e 94 89 0b 	call	0x1712	; 0x1712 <__udivmodqi4>
      100:	8b 83       	std	Y+3, r24	; 0x03
 	return result;
      102:	8b 81       	ldd	r24, Y+3	; 0x03
@@ -186,14 +186,14 @@ void Update_Temp(void){
 		Timer2_Stop();
      128:	0e 94 08 02 	call	0x410	; 0x410 <Timer2_Stop>
 		Blink_Status = !Blink_Status;
-     12c:	80 91 69 00 	lds	r24, 0x0069
+     12c:	80 91 6d 00 	lds	r24, 0x006D
      130:	1d 82       	std	Y+5, r1	; 0x05
      132:	88 23       	and	r24, r24
      134:	11 f4       	brne	.+4      	; 0x13a <Update_Temp+0x2a>
      136:	81 e0       	ldi	r24, 0x01	; 1
      138:	8d 83       	std	Y+5, r24	; 0x05
      13a:	8d 81       	ldd	r24, Y+5	; 0x05
-     13c:	80 93 69 00 	sts	0x0069, r24
+     13c:	80 93 6d 00 	sts	0x006D, r24
 		u8 Temp = 0/*TempSen_Read()*/;
      140:	1c 82       	std	Y+4, r1	; 0x04
 		u8 Var1 = Temp_arr[0];
@@ -259,7 +259,7 @@ void Update_Temp(void){
 		}
 		Curr_Temp=Calc_Average();
      198:	0e 94 5e 00 	call	0xbc	; 0xbc <Calc_Average>
-     19c:	80 93 6a 00 	sts	0x006A, r24
+     19c:	80 93 6e 00 	sts	0x006E, r24
 		Counter=0;
      1a0:	10 92 62 00 	sts	0x0062, r1
      1a4:	08 c0       	rjmp	.+16     	; 0x1b6 <Update_Temp+0xa6>
@@ -274,7 +274,7 @@ void Update_Temp(void){
      1b2:	0e 94 83 01 	call	0x306	; 0x306 <Timer2_Start>
 	}
 	Update_Temp_En =FALSE;
-     1b6:	10 92 6b 00 	sts	0x006B, r1
+     1b6:	10 92 6f 00 	sts	0x006F, r1
 }
      1ba:	0f 90       	pop	r0
      1bc:	0f 90       	pop	r0
@@ -326,15 +326,15 @@ void Restore_Temp(void){
      1f0:	89 17       	cp	r24, r25
      1f2:	19 f4       	brne	.+6      	; 0x1fa <Restore_Temp+0x22>
 		Des_Temp = 0/*EEPROM_Read(Add+1)*/;
-     1f4:	10 92 6c 00 	sts	0x006C, r1
+     1f4:	10 92 70 00 	sts	0x0070, r1
      1f8:	03 c0       	rjmp	.+6      	; 0x200 <Restore_Temp+0x28>
 	}
 	else{
 		//EEPROM_Write(Add,CHK);
 		//EEPROM_Write(Add+1,(u8)default_Temp);
 		Des_Temp = default_Temp;
-     1fa:	8c e3       	ldi	r24, 0x3C	; 60
-     1fc:	80 93 6c 00 	sts	0x006C, r24
+     1fa:	82 e3       	ldi	r24, 0x32	; 50
+     1fc:	80 93 70 00 	sts	0x0070, r24
 	}
 }
      200:	0f 90       	pop	r0
@@ -360,7 +360,7 @@ ISR(TIMER1_OVF_vect){
      21e:	de b7       	in	r29, 0x3e	; 62
 	Mode = Temp_Set;
      220:	81 e0       	ldi	r24, 0x01	; 1
-     222:	80 93 6d 00 	sts	0x006D, r24
+     222:	80 93 71 00 	sts	0x0071, r24
 	//Timer1_Stop();
 	//Timer1_DisableInterrupt();
 }
@@ -420,7 +420,7 @@ ISR(TIMER0_OVF_vect){
      274:	51 f4       	brne	.+20     	; 0x28a <__vector_11+0x46>
 		ButtonEnable = TRUE;
      276:	81 e0       	ldi	r24, 0x01	; 1
-     278:	80 93 6e 00 	sts	0x006E, r24
+     278:	80 93 72 00 	sts	0x0072, r24
 		Timer0_Stop();
      27c:	0e 94 b0 03 	call	0x760	; 0x760 <Timer0_Stop>
 		Timer0_DisableInterrupt();
@@ -468,7 +468,7 @@ void Debounce_Handler(void){
      2c4:	cd b7       	in	r28, 0x3d	; 61
      2c6:	de b7       	in	r29, 0x3e	; 62
 	ButtonEnable = FALSE;
-     2c8:	10 92 6e 00 	sts	0x006E, r1
+     2c8:	10 92 72 00 	sts	0x0072, r1
 	Timer0_Start(TIMER0_1024_);
      2cc:	85 e0       	ldi	r24, 0x05	; 5
      2ce:	0e 94 2b 03 	call	0x656	; 0x656 <Timer0_Start>
@@ -2527,7 +2527,7 @@ void DIO_WRITE_STATUS(Port_ID port,Pin_ID pin,Pin_Status direction){  //to write
      f86:	85 c0       	rjmp	.+266    	; 0x1092 <DIO_WRITE_STATUS+0x160>
      f88:	af c0       	rjmp	.+350    	; 0x10e8 <DIO_WRITE_STATUS+0x1b6>
 	case DIO_PORTA:
-		if (direction==OTUPUT)
+		if (direction==OUTPUT)
      f8a:	8b 81       	ldd	r24, Y+3	; 0x03
      f8c:	81 30       	cpi	r24, 0x01	; 1
      f8e:	a1 f4       	brne	.+40     	; 0xfb8 <DIO_WRITE_STATUS+0x86>
@@ -2577,7 +2577,7 @@ void DIO_WRITE_STATUS(Port_ID port,Pin_ID pin,Pin_Status direction){  //to write
      fe0:	83 c0       	rjmp	.+262    	; 0x10e8 <DIO_WRITE_STATUS+0x1b6>
 		break;
 	case DIO_PORTB:
-		if (direction==OTUPUT)
+		if (direction==OUTPUT)
      fe2:	8b 81       	ldd	r24, Y+3	; 0x03
      fe4:	81 30       	cpi	r24, 0x01	; 1
      fe6:	a1 f4       	brne	.+40     	; 0x1010 <DIO_WRITE_STATUS+0xde>
@@ -2627,7 +2627,7 @@ void DIO_WRITE_STATUS(Port_ID port,Pin_ID pin,Pin_Status direction){  //to write
     1038:	57 c0       	rjmp	.+174    	; 0x10e8 <DIO_WRITE_STATUS+0x1b6>
 		break;
 	case DIO_PORTC:
-		if (direction==OTUPUT)
+		if (direction==OUTPUT)
     103a:	8b 81       	ldd	r24, Y+3	; 0x03
     103c:	81 30       	cpi	r24, 0x01	; 1
     103e:	a1 f4       	brne	.+40     	; 0x1068 <DIO_WRITE_STATUS+0x136>
@@ -2677,7 +2677,7 @@ void DIO_WRITE_STATUS(Port_ID port,Pin_ID pin,Pin_Status direction){  //to write
     1090:	2b c0       	rjmp	.+86     	; 0x10e8 <DIO_WRITE_STATUS+0x1b6>
 		break;
 	case DIO_PORTD:
-		if (direction==OTUPUT)
+		if (direction==OUTPUT)
     1092:	8b 81       	ldd	r24, Y+3	; 0x03
     1094:	81 30       	cpi	r24, 0x01	; 1
     1096:	a1 f4       	brne	.+40     	; 0x10c0 <DIO_WRITE_STATUS+0x18e>
@@ -2736,675 +2736,1002 @@ void DIO_WRITE_STATUS(Port_ID port,Pin_ID pin,Pin_Status direction){  //to write
     10f4:	df 91       	pop	r29
     10f6:	08 95       	ret
 
-000010f8 <LED_Init>:
+000010f8 <Dio_WriteGroup>:
+//--------------------------------------------------------------------------------------------------
+void Dio_WriteGroup(Port_ID port,u8 mask,u8 data)
+{
+    10f8:	df 93       	push	r29
+    10fa:	cf 93       	push	r28
+    10fc:	00 d0       	rcall	.+0      	; 0x10fe <Dio_WriteGroup+0x6>
+    10fe:	00 d0       	rcall	.+0      	; 0x1100 <Dio_WriteGroup+0x8>
+    1100:	0f 92       	push	r0
+    1102:	cd b7       	in	r28, 0x3d	; 61
+    1104:	de b7       	in	r29, 0x3e	; 62
+    1106:	89 83       	std	Y+1, r24	; 0x01
+    1108:	6a 83       	std	Y+2, r22	; 0x02
+    110a:	4b 83       	std	Y+3, r20	; 0x03
+	switch(port)
+    110c:	89 81       	ldd	r24, Y+1	; 0x01
+    110e:	28 2f       	mov	r18, r24
+    1110:	30 e0       	ldi	r19, 0x00	; 0
+    1112:	3d 83       	std	Y+5, r19	; 0x05
+    1114:	2c 83       	std	Y+4, r18	; 0x04
+    1116:	8c 81       	ldd	r24, Y+4	; 0x04
+    1118:	9d 81       	ldd	r25, Y+5	; 0x05
+    111a:	81 30       	cpi	r24, 0x01	; 1
+    111c:	91 05       	cpc	r25, r1
+    111e:	29 f1       	breq	.+74     	; 0x116a <Dio_WriteGroup+0x72>
+    1120:	2c 81       	ldd	r18, Y+4	; 0x04
+    1122:	3d 81       	ldd	r19, Y+5	; 0x05
+    1124:	22 30       	cpi	r18, 0x02	; 2
+    1126:	31 05       	cpc	r19, r1
+    1128:	2c f4       	brge	.+10     	; 0x1134 <Dio_WriteGroup+0x3c>
+    112a:	8c 81       	ldd	r24, Y+4	; 0x04
+    112c:	9d 81       	ldd	r25, Y+5	; 0x05
+    112e:	00 97       	sbiw	r24, 0x00	; 0
+    1130:	61 f0       	breq	.+24     	; 0x114a <Dio_WriteGroup+0x52>
+    1132:	4a c0       	rjmp	.+148    	; 0x11c8 <Dio_WriteGroup+0xd0>
+    1134:	2c 81       	ldd	r18, Y+4	; 0x04
+    1136:	3d 81       	ldd	r19, Y+5	; 0x05
+    1138:	22 30       	cpi	r18, 0x02	; 2
+    113a:	31 05       	cpc	r19, r1
+    113c:	31 f1       	breq	.+76     	; 0x118a <Dio_WriteGroup+0x92>
+    113e:	8c 81       	ldd	r24, Y+4	; 0x04
+    1140:	9d 81       	ldd	r25, Y+5	; 0x05
+    1142:	83 30       	cpi	r24, 0x03	; 3
+    1144:	91 05       	cpc	r25, r1
+    1146:	89 f1       	breq	.+98     	; 0x11aa <Dio_WriteGroup+0xb2>
+    1148:	3f c0       	rjmp	.+126    	; 0x11c8 <Dio_WriteGroup+0xd0>
+	{
+	case DIO_PORTA:
+		PORTA_REG = (PORTA_REG&~mask)|(data & mask);
+    114a:	ab e3       	ldi	r26, 0x3B	; 59
+    114c:	b0 e0       	ldi	r27, 0x00	; 0
+    114e:	eb e3       	ldi	r30, 0x3B	; 59
+    1150:	f0 e0       	ldi	r31, 0x00	; 0
+    1152:	80 81       	ld	r24, Z
+    1154:	98 2f       	mov	r25, r24
+    1156:	8a 81       	ldd	r24, Y+2	; 0x02
+    1158:	80 95       	com	r24
+    115a:	29 2f       	mov	r18, r25
+    115c:	28 23       	and	r18, r24
+    115e:	9b 81       	ldd	r25, Y+3	; 0x03
+    1160:	8a 81       	ldd	r24, Y+2	; 0x02
+    1162:	89 23       	and	r24, r25
+    1164:	82 2b       	or	r24, r18
+    1166:	8c 93       	st	X, r24
+    1168:	2f c0       	rjmp	.+94     	; 0x11c8 <Dio_WriteGroup+0xd0>
+		break;
+
+	case DIO_PORTB:
+		PORTB_REG = (PORTB_REG&~mask)|(data & mask);
+    116a:	a8 e3       	ldi	r26, 0x38	; 56
+    116c:	b0 e0       	ldi	r27, 0x00	; 0
+    116e:	e8 e3       	ldi	r30, 0x38	; 56
+    1170:	f0 e0       	ldi	r31, 0x00	; 0
+    1172:	80 81       	ld	r24, Z
+    1174:	98 2f       	mov	r25, r24
+    1176:	8a 81       	ldd	r24, Y+2	; 0x02
+    1178:	80 95       	com	r24
+    117a:	29 2f       	mov	r18, r25
+    117c:	28 23       	and	r18, r24
+    117e:	9b 81       	ldd	r25, Y+3	; 0x03
+    1180:	8a 81       	ldd	r24, Y+2	; 0x02
+    1182:	89 23       	and	r24, r25
+    1184:	82 2b       	or	r24, r18
+    1186:	8c 93       	st	X, r24
+    1188:	1f c0       	rjmp	.+62     	; 0x11c8 <Dio_WriteGroup+0xd0>
+		break;
+
+	case DIO_PORTC:
+		PORTC_REG = (PORTC_REG&~mask)|(data & mask);
+    118a:	a5 e3       	ldi	r26, 0x35	; 53
+    118c:	b0 e0       	ldi	r27, 0x00	; 0
+    118e:	e5 e3       	ldi	r30, 0x35	; 53
+    1190:	f0 e0       	ldi	r31, 0x00	; 0
+    1192:	80 81       	ld	r24, Z
+    1194:	98 2f       	mov	r25, r24
+    1196:	8a 81       	ldd	r24, Y+2	; 0x02
+    1198:	80 95       	com	r24
+    119a:	29 2f       	mov	r18, r25
+    119c:	28 23       	and	r18, r24
+    119e:	9b 81       	ldd	r25, Y+3	; 0x03
+    11a0:	8a 81       	ldd	r24, Y+2	; 0x02
+    11a2:	89 23       	and	r24, r25
+    11a4:	82 2b       	or	r24, r18
+    11a6:	8c 93       	st	X, r24
+    11a8:	0f c0       	rjmp	.+30     	; 0x11c8 <Dio_WriteGroup+0xd0>
+		break;
+
+	case DIO_PORTD:
+		PORTD_REG = (PORTD_REG&~mask)|(data & mask);
+    11aa:	a2 e3       	ldi	r26, 0x32	; 50
+    11ac:	b0 e0       	ldi	r27, 0x00	; 0
+    11ae:	e2 e3       	ldi	r30, 0x32	; 50
+    11b0:	f0 e0       	ldi	r31, 0x00	; 0
+    11b2:	80 81       	ld	r24, Z
+    11b4:	98 2f       	mov	r25, r24
+    11b6:	8a 81       	ldd	r24, Y+2	; 0x02
+    11b8:	80 95       	com	r24
+    11ba:	29 2f       	mov	r18, r25
+    11bc:	28 23       	and	r18, r24
+    11be:	9b 81       	ldd	r25, Y+3	; 0x03
+    11c0:	8a 81       	ldd	r24, Y+2	; 0x02
+    11c2:	89 23       	and	r24, r25
+    11c4:	82 2b       	or	r24, r18
+    11c6:	8c 93       	st	X, r24
+		break;
+	}
+}
+    11c8:	0f 90       	pop	r0
+    11ca:	0f 90       	pop	r0
+    11cc:	0f 90       	pop	r0
+    11ce:	0f 90       	pop	r0
+    11d0:	0f 90       	pop	r0
+    11d2:	cf 91       	pop	r28
+    11d4:	df 91       	pop	r29
+    11d6:	08 95       	ret
+
+000011d8 <SSD_Init>:
+#include "SSD.h"
+
+static u32 Counter =0;
+
+void SSD_Init(void)
+{
+    11d8:	df 93       	push	r29
+    11da:	cf 93       	push	r28
+    11dc:	cd b7       	in	r28, 0x3d	; 61
+    11de:	de b7       	in	r29, 0x3e	; 62
+	/*	Configure Data Lines As Output	*/
+	DIO_WRITE_STATUS(DIO_PORTA,DIO_PIN4,OUTPUT);
+    11e0:	80 e0       	ldi	r24, 0x00	; 0
+    11e2:	64 e0       	ldi	r22, 0x04	; 4
+    11e4:	41 e0       	ldi	r20, 0x01	; 1
+    11e6:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+	DIO_WRITE_STATUS(DIO_PORTA,DIO_PIN5,OUTPUT);
+    11ea:	80 e0       	ldi	r24, 0x00	; 0
+    11ec:	65 e0       	ldi	r22, 0x05	; 5
+    11ee:	41 e0       	ldi	r20, 0x01	; 1
+    11f0:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+	DIO_WRITE_STATUS(DIO_PORTA,DIO_PIN6,OUTPUT);
+    11f4:	80 e0       	ldi	r24, 0x00	; 0
+    11f6:	66 e0       	ldi	r22, 0x06	; 6
+    11f8:	41 e0       	ldi	r20, 0x01	; 1
+    11fa:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+	DIO_WRITE_STATUS(DIO_PORTA,DIO_PIN7,OUTPUT);
+    11fe:	80 e0       	ldi	r24, 0x00	; 0
+    1200:	67 e0       	ldi	r22, 0x07	; 7
+    1202:	41 e0       	ldi	r20, 0x01	; 1
+    1204:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+
+	/*	Configure Control Lines As Output	*/
+	DIO_WRITE_STATUS(DIO_PORTB,DIO_PIN1,OUTPUT);
+    1208:	81 e0       	ldi	r24, 0x01	; 1
+    120a:	61 e0       	ldi	r22, 0x01	; 1
+    120c:	41 e0       	ldi	r20, 0x01	; 1
+    120e:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+	DIO_WRITE_STATUS(DIO_PORTB,DIO_PIN2,OUTPUT);
+    1212:	81 e0       	ldi	r24, 0x01	; 1
+    1214:	62 e0       	ldi	r22, 0x02	; 2
+    1216:	41 e0       	ldi	r20, 0x01	; 1
+    1218:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+}
+    121c:	cf 91       	pop	r28
+    121e:	df 91       	pop	r29
+    1220:	08 95       	ret
+
+00001222 <SSD_DisplayNumber>:
+//--------------------------------------------------------------------------------------------------
+void SSD_DisplayNumber(u8 num)
+{
+    1222:	df 93       	push	r29
+    1224:	cf 93       	push	r28
+    1226:	00 d0       	rcall	.+0      	; 0x1228 <SSD_DisplayNumber+0x6>
+    1228:	0f 92       	push	r0
+    122a:	cd b7       	in	r28, 0x3d	; 61
+    122c:	de b7       	in	r29, 0x3e	; 62
+    122e:	8b 83       	std	Y+3, r24	; 0x03
+	u8 loc_FirstDigit = (num/10)<<4;
+    1230:	8b 81       	ldd	r24, Y+3	; 0x03
+    1232:	9a e0       	ldi	r25, 0x0A	; 10
+    1234:	69 2f       	mov	r22, r25
+    1236:	0e 94 89 0b 	call	0x1712	; 0x1712 <__udivmodqi4>
+    123a:	82 95       	swap	r24
+    123c:	80 7f       	andi	r24, 0xF0	; 240
+    123e:	8a 83       	std	Y+2, r24	; 0x02
+	u8 loc_Second_Digit = (num%10)<<4;
+    1240:	8b 81       	ldd	r24, Y+3	; 0x03
+    1242:	9a e0       	ldi	r25, 0x0A	; 10
+    1244:	69 2f       	mov	r22, r25
+    1246:	0e 94 89 0b 	call	0x1712	; 0x1712 <__udivmodqi4>
+    124a:	89 2f       	mov	r24, r25
+    124c:	82 95       	swap	r24
+    124e:	80 7f       	andi	r24, 0xF0	; 240
+    1250:	89 83       	std	Y+1, r24	; 0x01
+
+	if(Counter < (2^31/2)){
+    1252:	80 91 69 00 	lds	r24, 0x0069
+    1256:	90 91 6a 00 	lds	r25, 0x006A
+    125a:	a0 91 6b 00 	lds	r26, 0x006B
+    125e:	b0 91 6c 00 	lds	r27, 0x006C
+    1262:	8d 30       	cpi	r24, 0x0D	; 13
+    1264:	91 05       	cpc	r25, r1
+    1266:	a1 05       	cpc	r26, r1
+    1268:	b1 05       	cpc	r27, r1
+    126a:	70 f4       	brcc	.+28     	; 0x1288 <SSD_DisplayNumber+0x66>
+		/*	Enable SSD1	*/
+		DIO_SET_PIN(DIO_PORTB, DIO_PIN2);
+    126c:	81 e0       	ldi	r24, 0x01	; 1
+    126e:	62 e0       	ldi	r22, 0x02	; 2
+    1270:	0e 94 fc 03 	call	0x7f8	; 0x7f8 <DIO_SET_PIN>
+		/*	Disable SSD2	*/
+		DIO_CLEAR_PIN(DIO_PORTB, DIO_PIN1);
+    1274:	81 e0       	ldi	r24, 0x01	; 1
+    1276:	61 e0       	ldi	r22, 0x01	; 1
+    1278:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
+		/*	Write Number To SSD	*/
+		Dio_WriteGroup(DIO_PORTA,SSD_MASK,loc_FirstDigit);
+    127c:	80 e0       	ldi	r24, 0x00	; 0
+    127e:	60 ef       	ldi	r22, 0xF0	; 240
+    1280:	4a 81       	ldd	r20, Y+2	; 0x02
+    1282:	0e 94 7c 08 	call	0x10f8	; 0x10f8 <Dio_WriteGroup>
+    1286:	0d c0       	rjmp	.+26     	; 0x12a2 <SSD_DisplayNumber+0x80>
+		/*	wait(1m)	*/
+	}else{
+		/*	Disable SSD1	*/
+		DIO_CLEAR_PIN(DIO_PORTB, DIO_PIN2);
+    1288:	81 e0       	ldi	r24, 0x01	; 1
+    128a:	62 e0       	ldi	r22, 0x02	; 2
+    128c:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
+		/*	Enable SSD2	*/
+		DIO_SET_PIN(DIO_PORTB, DIO_PIN1);
+    1290:	81 e0       	ldi	r24, 0x01	; 1
+    1292:	61 e0       	ldi	r22, 0x01	; 1
+    1294:	0e 94 fc 03 	call	0x7f8	; 0x7f8 <DIO_SET_PIN>
+		/*	Write Number To SSD	*/
+		Dio_WriteGroup(DIO_PORTA,SSD_MASK,loc_Second_Digit);
+    1298:	80 e0       	ldi	r24, 0x00	; 0
+    129a:	60 ef       	ldi	r22, 0xF0	; 240
+    129c:	49 81       	ldd	r20, Y+1	; 0x01
+    129e:	0e 94 7c 08 	call	0x10f8	; 0x10f8 <Dio_WriteGroup>
+		/*	wait(1m)	*/
+	}
+	Counter++;
+    12a2:	80 91 69 00 	lds	r24, 0x0069
+    12a6:	90 91 6a 00 	lds	r25, 0x006A
+    12aa:	a0 91 6b 00 	lds	r26, 0x006B
+    12ae:	b0 91 6c 00 	lds	r27, 0x006C
+    12b2:	01 96       	adiw	r24, 0x01	; 1
+    12b4:	a1 1d       	adc	r26, r1
+    12b6:	b1 1d       	adc	r27, r1
+    12b8:	80 93 69 00 	sts	0x0069, r24
+    12bc:	90 93 6a 00 	sts	0x006A, r25
+    12c0:	a0 93 6b 00 	sts	0x006B, r26
+    12c4:	b0 93 6c 00 	sts	0x006C, r27
+	if(Counter==(2^32)){
+    12c8:	80 91 69 00 	lds	r24, 0x0069
+    12cc:	90 91 6a 00 	lds	r25, 0x006A
+    12d0:	a0 91 6b 00 	lds	r26, 0x006B
+    12d4:	b0 91 6c 00 	lds	r27, 0x006C
+    12d8:	82 32       	cpi	r24, 0x22	; 34
+    12da:	91 05       	cpc	r25, r1
+    12dc:	a1 05       	cpc	r26, r1
+    12de:	b1 05       	cpc	r27, r1
+    12e0:	41 f4       	brne	.+16     	; 0x12f2 <SSD_DisplayNumber+0xd0>
+		Counter = 0;
+    12e2:	10 92 69 00 	sts	0x0069, r1
+    12e6:	10 92 6a 00 	sts	0x006A, r1
+    12ea:	10 92 6b 00 	sts	0x006B, r1
+    12ee:	10 92 6c 00 	sts	0x006C, r1
+	}
+}
+    12f2:	0f 90       	pop	r0
+    12f4:	0f 90       	pop	r0
+    12f6:	0f 90       	pop	r0
+    12f8:	cf 91       	pop	r28
+    12fa:	df 91       	pop	r29
+    12fc:	08 95       	ret
+
+000012fe <SSD_Stop>:
+//--------------------------------------------------------------------------------------------------
+void SSD_Stop(){
+    12fe:	df 93       	push	r29
+    1300:	cf 93       	push	r28
+    1302:	cd b7       	in	r28, 0x3d	; 61
+    1304:	de b7       	in	r29, 0x3e	; 62
+	/*	Disable SSD1	*/
+	DIO_CLEAR_PIN(DIO_PORTB, DIO_PIN2);
+    1306:	81 e0       	ldi	r24, 0x01	; 1
+    1308:	62 e0       	ldi	r22, 0x02	; 2
+    130a:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
+	/*	Disable SSD2	*/
+	DIO_CLEAR_PIN(DIO_PORTB, DIO_PIN1);
+    130e:	81 e0       	ldi	r24, 0x01	; 1
+    1310:	61 e0       	ldi	r22, 0x01	; 1
+    1312:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
+}
+    1316:	cf 91       	pop	r28
+    1318:	df 91       	pop	r29
+    131a:	08 95       	ret
+
+0000131c <LED_Init>:
 #include "LED.h"
 
 void LED_Init(void){
-    10f8:	df 93       	push	r29
-    10fa:	cf 93       	push	r28
-    10fc:	cd b7       	in	r28, 0x3d	; 61
-    10fe:	de b7       	in	r29, 0x3e	; 62
-    DIO_WRITE_STATUS(LED1_PORT, LED1_PIN, OTUPUT);
-    1100:	82 e0       	ldi	r24, 0x02	; 2
-    1102:	67 e0       	ldi	r22, 0x07	; 7
-    1104:	41 e0       	ldi	r20, 0x01	; 1
-    1106:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+    131c:	df 93       	push	r29
+    131e:	cf 93       	push	r28
+    1320:	cd b7       	in	r28, 0x3d	; 61
+    1322:	de b7       	in	r29, 0x3e	; 62
+    DIO_WRITE_STATUS(LED1_PORT, LED1_PIN, OUTPUT);
+    1324:	82 e0       	ldi	r24, 0x02	; 2
+    1326:	67 e0       	ldi	r22, 0x07	; 7
+    1328:	41 e0       	ldi	r20, 0x01	; 1
+    132a:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
 }
-    110a:	cf 91       	pop	r28
-    110c:	df 91       	pop	r29
-    110e:	08 95       	ret
+    132e:	cf 91       	pop	r28
+    1330:	df 91       	pop	r29
+    1332:	08 95       	ret
 
-00001110 <LED_ON>:
+00001334 <LED_ON>:
 
 void LED_ON(void){
-    1110:	df 93       	push	r29
-    1112:	cf 93       	push	r28
-    1114:	cd b7       	in	r28, 0x3d	; 61
-    1116:	de b7       	in	r29, 0x3e	; 62
+    1334:	df 93       	push	r29
+    1336:	cf 93       	push	r28
+    1338:	cd b7       	in	r28, 0x3d	; 61
+    133a:	de b7       	in	r29, 0x3e	; 62
 	DIO_SET_PIN(LED1_PORT, LED1_PIN);
-    1118:	82 e0       	ldi	r24, 0x02	; 2
-    111a:	67 e0       	ldi	r22, 0x07	; 7
-    111c:	0e 94 fc 03 	call	0x7f8	; 0x7f8 <DIO_SET_PIN>
+    133c:	82 e0       	ldi	r24, 0x02	; 2
+    133e:	67 e0       	ldi	r22, 0x07	; 7
+    1340:	0e 94 fc 03 	call	0x7f8	; 0x7f8 <DIO_SET_PIN>
 }
-    1120:	cf 91       	pop	r28
-    1122:	df 91       	pop	r29
-    1124:	08 95       	ret
+    1344:	cf 91       	pop	r28
+    1346:	df 91       	pop	r29
+    1348:	08 95       	ret
 
-00001126 <LED_OFF>:
+0000134a <LED_OFF>:
 
 void LED_OFF(void){
-    1126:	df 93       	push	r29
-    1128:	cf 93       	push	r28
-    112a:	cd b7       	in	r28, 0x3d	; 61
-    112c:	de b7       	in	r29, 0x3e	; 62
+    134a:	df 93       	push	r29
+    134c:	cf 93       	push	r28
+    134e:	cd b7       	in	r28, 0x3d	; 61
+    1350:	de b7       	in	r29, 0x3e	; 62
 	DIO_CLEAR_PIN(LED1_PORT, LED1_PIN);
-    112e:	82 e0       	ldi	r24, 0x02	; 2
-    1130:	67 e0       	ldi	r22, 0x07	; 7
-    1132:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
+    1352:	82 e0       	ldi	r24, 0x02	; 2
+    1354:	67 e0       	ldi	r22, 0x07	; 7
+    1356:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
 }
-    1136:	cf 91       	pop	r28
-    1138:	df 91       	pop	r29
-    113a:	08 95       	ret
+    135a:	cf 91       	pop	r28
+    135c:	df 91       	pop	r29
+    135e:	08 95       	ret
 
-0000113c <LED_TOGGLE>:
+00001360 <LED_TOGGLE>:
 
 void LED_TOGGLE(void){
-    113c:	df 93       	push	r29
-    113e:	cf 93       	push	r28
-    1140:	cd b7       	in	r28, 0x3d	; 61
-    1142:	de b7       	in	r29, 0x3e	; 62
+    1360:	df 93       	push	r29
+    1362:	cf 93       	push	r28
+    1364:	cd b7       	in	r28, 0x3d	; 61
+    1366:	de b7       	in	r29, 0x3e	; 62
     DIO_TOGGLE_PIN(LED1_PORT, LED1_PIN);
-    1144:	82 e0       	ldi	r24, 0x02	; 2
-    1146:	67 e0       	ldi	r22, 0x07	; 7
-    1148:	0e 94 fb 04 	call	0x9f6	; 0x9f6 <DIO_TOGGLE_PIN>
+    1368:	82 e0       	ldi	r24, 0x02	; 2
+    136a:	67 e0       	ldi	r22, 0x07	; 7
+    136c:	0e 94 fb 04 	call	0x9f6	; 0x9f6 <DIO_TOGGLE_PIN>
 }
-    114c:	cf 91       	pop	r28
-    114e:	df 91       	pop	r29
-    1150:	08 95       	ret
+    1370:	cf 91       	pop	r28
+    1372:	df 91       	pop	r29
+    1374:	08 95       	ret
 
-00001152 <Heater_Init>:
+00001376 <Heater_Init>:
 #include "Heater.h"
 
 void Heater_Init(){
-    1152:	df 93       	push	r29
-    1154:	cf 93       	push	r28
-    1156:	cd b7       	in	r28, 0x3d	; 61
-    1158:	de b7       	in	r29, 0x3e	; 62
-	DIO_WRITE_STATUS(Heater_Port, Heater_Pin, OTUPUT);
-    115a:	82 e0       	ldi	r24, 0x02	; 2
-    115c:	64 e0       	ldi	r22, 0x04	; 4
-    115e:	41 e0       	ldi	r20, 0x01	; 1
-    1160:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+    1376:	df 93       	push	r29
+    1378:	cf 93       	push	r28
+    137a:	cd b7       	in	r28, 0x3d	; 61
+    137c:	de b7       	in	r29, 0x3e	; 62
+	DIO_WRITE_STATUS(Heater_Port, Heater_Pin, OUTPUT);
+    137e:	82 e0       	ldi	r24, 0x02	; 2
+    1380:	64 e0       	ldi	r22, 0x04	; 4
+    1382:	41 e0       	ldi	r20, 0x01	; 1
+    1384:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
 }
-    1164:	cf 91       	pop	r28
-    1166:	df 91       	pop	r29
-    1168:	08 95       	ret
+    1388:	cf 91       	pop	r28
+    138a:	df 91       	pop	r29
+    138c:	08 95       	ret
 
-0000116a <Heater_ON>:
+0000138e <Heater_ON>:
 
 void Heater_ON(){
-    116a:	df 93       	push	r29
-    116c:	cf 93       	push	r28
-    116e:	cd b7       	in	r28, 0x3d	; 61
-    1170:	de b7       	in	r29, 0x3e	; 62
+    138e:	df 93       	push	r29
+    1390:	cf 93       	push	r28
+    1392:	cd b7       	in	r28, 0x3d	; 61
+    1394:	de b7       	in	r29, 0x3e	; 62
 	DIO_SET_PIN(Heater_Port, Heater_Pin);
-    1172:	82 e0       	ldi	r24, 0x02	; 2
-    1174:	64 e0       	ldi	r22, 0x04	; 4
-    1176:	0e 94 fc 03 	call	0x7f8	; 0x7f8 <DIO_SET_PIN>
+    1396:	82 e0       	ldi	r24, 0x02	; 2
+    1398:	64 e0       	ldi	r22, 0x04	; 4
+    139a:	0e 94 fc 03 	call	0x7f8	; 0x7f8 <DIO_SET_PIN>
 }
-    117a:	cf 91       	pop	r28
-    117c:	df 91       	pop	r29
-    117e:	08 95       	ret
+    139e:	cf 91       	pop	r28
+    13a0:	df 91       	pop	r29
+    13a2:	08 95       	ret
 
-00001180 <Heater_OFF>:
+000013a4 <Heater_OFF>:
 void Heater_OFF(){
-    1180:	df 93       	push	r29
-    1182:	cf 93       	push	r28
-    1184:	cd b7       	in	r28, 0x3d	; 61
-    1186:	de b7       	in	r29, 0x3e	; 62
+    13a4:	df 93       	push	r29
+    13a6:	cf 93       	push	r28
+    13a8:	cd b7       	in	r28, 0x3d	; 61
+    13aa:	de b7       	in	r29, 0x3e	; 62
 	DIO_CLEAR_PIN(Heater_Port, Heater_Pin);
-    1188:	82 e0       	ldi	r24, 0x02	; 2
-    118a:	64 e0       	ldi	r22, 0x04	; 4
-    118c:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
+    13ac:	82 e0       	ldi	r24, 0x02	; 2
+    13ae:	64 e0       	ldi	r22, 0x04	; 4
+    13b0:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
 	LED_OFF();
-    1190:	0e 94 93 08 	call	0x1126	; 0x1126 <LED_OFF>
+    13b4:	0e 94 a5 09 	call	0x134a	; 0x134a <LED_OFF>
 }
-    1194:	cf 91       	pop	r28
-    1196:	df 91       	pop	r29
-    1198:	08 95       	ret
+    13b8:	cf 91       	pop	r28
+    13ba:	df 91       	pop	r29
+    13bc:	08 95       	ret
 
-0000119a <Cooler_Init>:
+000013be <Cooler_Init>:
 #include "Cooler.h"
 
 void Cooler_Init(){
-    119a:	df 93       	push	r29
-    119c:	cf 93       	push	r28
-    119e:	cd b7       	in	r28, 0x3d	; 61
-    11a0:	de b7       	in	r29, 0x3e	; 62
-	DIO_WRITE_STATUS(Cooler_Port, Cooler_Pin, OTUPUT);
-    11a2:	82 e0       	ldi	r24, 0x02	; 2
-    11a4:	64 e0       	ldi	r22, 0x04	; 4
-    11a6:	41 e0       	ldi	r20, 0x01	; 1
-    11a8:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+    13be:	df 93       	push	r29
+    13c0:	cf 93       	push	r28
+    13c2:	cd b7       	in	r28, 0x3d	; 61
+    13c4:	de b7       	in	r29, 0x3e	; 62
+	DIO_WRITE_STATUS(Cooler_Port, Cooler_Pin, OUTPUT);
+    13c6:	82 e0       	ldi	r24, 0x02	; 2
+    13c8:	64 e0       	ldi	r22, 0x04	; 4
+    13ca:	41 e0       	ldi	r20, 0x01	; 1
+    13cc:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
 }
-    11ac:	cf 91       	pop	r28
-    11ae:	df 91       	pop	r29
-    11b0:	08 95       	ret
+    13d0:	cf 91       	pop	r28
+    13d2:	df 91       	pop	r29
+    13d4:	08 95       	ret
 
-000011b2 <Cooler_ON>:
+000013d6 <Cooler_ON>:
 void Cooler_ON(){
-    11b2:	df 93       	push	r29
-    11b4:	cf 93       	push	r28
-    11b6:	cd b7       	in	r28, 0x3d	; 61
-    11b8:	de b7       	in	r29, 0x3e	; 62
+    13d6:	df 93       	push	r29
+    13d8:	cf 93       	push	r28
+    13da:	cd b7       	in	r28, 0x3d	; 61
+    13dc:	de b7       	in	r29, 0x3e	; 62
 	DIO_SET_PIN(Cooler_Port, Cooler_Pin);
-    11ba:	82 e0       	ldi	r24, 0x02	; 2
-    11bc:	64 e0       	ldi	r22, 0x04	; 4
-    11be:	0e 94 fc 03 	call	0x7f8	; 0x7f8 <DIO_SET_PIN>
+    13de:	82 e0       	ldi	r24, 0x02	; 2
+    13e0:	64 e0       	ldi	r22, 0x04	; 4
+    13e2:	0e 94 fc 03 	call	0x7f8	; 0x7f8 <DIO_SET_PIN>
 	LED_ON();
-    11c2:	0e 94 88 08 	call	0x1110	; 0x1110 <LED_ON>
+    13e6:	0e 94 9a 09 	call	0x1334	; 0x1334 <LED_ON>
 }
-    11c6:	cf 91       	pop	r28
-    11c8:	df 91       	pop	r29
-    11ca:	08 95       	ret
+    13ea:	cf 91       	pop	r28
+    13ec:	df 91       	pop	r29
+    13ee:	08 95       	ret
 
-000011cc <Cooler_OFF>:
+000013f0 <Cooler_OFF>:
 void Cooler_OFF(){
-    11cc:	df 93       	push	r29
-    11ce:	cf 93       	push	r28
-    11d0:	cd b7       	in	r28, 0x3d	; 61
-    11d2:	de b7       	in	r29, 0x3e	; 62
+    13f0:	df 93       	push	r29
+    13f2:	cf 93       	push	r28
+    13f4:	cd b7       	in	r28, 0x3d	; 61
+    13f6:	de b7       	in	r29, 0x3e	; 62
 	DIO_CLEAR_PIN(Cooler_Port, Cooler_Pin);
-    11d4:	82 e0       	ldi	r24, 0x02	; 2
-    11d6:	64 e0       	ldi	r22, 0x04	; 4
-    11d8:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
+    13f8:	82 e0       	ldi	r24, 0x02	; 2
+    13fa:	64 e0       	ldi	r22, 0x04	; 4
+    13fc:	0e 94 79 04 	call	0x8f2	; 0x8f2 <DIO_CLEAR_PIN>
 	LED_OFF();
-    11dc:	0e 94 93 08 	call	0x1126	; 0x1126 <LED_OFF>
+    1400:	0e 94 a5 09 	call	0x134a	; 0x134a <LED_OFF>
 }
-    11e0:	cf 91       	pop	r28
-    11e2:	df 91       	pop	r29
-    11e4:	08 95       	ret
+    1404:	cf 91       	pop	r28
+    1406:	df 91       	pop	r29
+    1408:	08 95       	ret
 
-000011e6 <Button_Init>:
+0000140a <Button_Init>:
 #include "Button.h"
 
 void Button_Init(Button_ID Button){
-    11e6:	df 93       	push	r29
-    11e8:	cf 93       	push	r28
-    11ea:	00 d0       	rcall	.+0      	; 0x11ec <Button_Init+0x6>
-    11ec:	0f 92       	push	r0
-    11ee:	cd b7       	in	r28, 0x3d	; 61
-    11f0:	de b7       	in	r29, 0x3e	; 62
-    11f2:	89 83       	std	Y+1, r24	; 0x01
+    140a:	df 93       	push	r29
+    140c:	cf 93       	push	r28
+    140e:	00 d0       	rcall	.+0      	; 0x1410 <Button_Init+0x6>
+    1410:	0f 92       	push	r0
+    1412:	cd b7       	in	r28, 0x3d	; 61
+    1414:	de b7       	in	r29, 0x3e	; 62
+    1416:	89 83       	std	Y+1, r24	; 0x01
 	switch(Button){
-    11f4:	89 81       	ldd	r24, Y+1	; 0x01
-    11f6:	28 2f       	mov	r18, r24
-    11f8:	30 e0       	ldi	r19, 0x00	; 0
-    11fa:	3b 83       	std	Y+3, r19	; 0x03
-    11fc:	2a 83       	std	Y+2, r18	; 0x02
-    11fe:	8a 81       	ldd	r24, Y+2	; 0x02
-    1200:	9b 81       	ldd	r25, Y+3	; 0x03
-    1202:	81 30       	cpi	r24, 0x01	; 1
-    1204:	91 05       	cpc	r25, r1
-    1206:	79 f0       	breq	.+30     	; 0x1226 <Button_Init+0x40>
-    1208:	2a 81       	ldd	r18, Y+2	; 0x02
-    120a:	3b 81       	ldd	r19, Y+3	; 0x03
-    120c:	22 30       	cpi	r18, 0x02	; 2
-    120e:	31 05       	cpc	r19, r1
-    1210:	81 f0       	breq	.+32     	; 0x1232 <Button_Init+0x4c>
-    1212:	8a 81       	ldd	r24, Y+2	; 0x02
-    1214:	9b 81       	ldd	r25, Y+3	; 0x03
-    1216:	00 97       	sbiw	r24, 0x00	; 0
-    1218:	89 f4       	brne	.+34     	; 0x123c <Button_Init+0x56>
+    1418:	89 81       	ldd	r24, Y+1	; 0x01
+    141a:	28 2f       	mov	r18, r24
+    141c:	30 e0       	ldi	r19, 0x00	; 0
+    141e:	3b 83       	std	Y+3, r19	; 0x03
+    1420:	2a 83       	std	Y+2, r18	; 0x02
+    1422:	8a 81       	ldd	r24, Y+2	; 0x02
+    1424:	9b 81       	ldd	r25, Y+3	; 0x03
+    1426:	81 30       	cpi	r24, 0x01	; 1
+    1428:	91 05       	cpc	r25, r1
+    142a:	79 f0       	breq	.+30     	; 0x144a <Button_Init+0x40>
+    142c:	2a 81       	ldd	r18, Y+2	; 0x02
+    142e:	3b 81       	ldd	r19, Y+3	; 0x03
+    1430:	22 30       	cpi	r18, 0x02	; 2
+    1432:	31 05       	cpc	r19, r1
+    1434:	81 f0       	breq	.+32     	; 0x1456 <Button_Init+0x4c>
+    1436:	8a 81       	ldd	r24, Y+2	; 0x02
+    1438:	9b 81       	ldd	r25, Y+3	; 0x03
+    143a:	00 97       	sbiw	r24, 0x00	; 0
+    143c:	89 f4       	brne	.+34     	; 0x1460 <Button_Init+0x56>
 		case(BUTTON0):
 				DIO_WRITE_STATUS(Button0_PORT, Button0_PIN, INPUT);
-    121a:	81 e0       	ldi	r24, 0x01	; 1
-    121c:	60 e0       	ldi	r22, 0x00	; 0
-    121e:	40 e0       	ldi	r20, 0x00	; 0
-    1220:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
-    1224:	0b c0       	rjmp	.+22     	; 0x123c <Button_Init+0x56>
+    143e:	81 e0       	ldi	r24, 0x01	; 1
+    1440:	60 e0       	ldi	r22, 0x00	; 0
+    1442:	40 e0       	ldi	r20, 0x00	; 0
+    1444:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+    1448:	0b c0       	rjmp	.+22     	; 0x1460 <Button_Init+0x56>
 				break;
 		case(BUTTON1):
 				DIO_WRITE_STATUS(Button1_PORT, Button1_PIN, INPUT);
-    1226:	81 e0       	ldi	r24, 0x01	; 1
-    1228:	64 e0       	ldi	r22, 0x04	; 4
-    122a:	40 e0       	ldi	r20, 0x00	; 0
-    122c:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
-    1230:	05 c0       	rjmp	.+10     	; 0x123c <Button_Init+0x56>
+    144a:	81 e0       	ldi	r24, 0x01	; 1
+    144c:	64 e0       	ldi	r22, 0x04	; 4
+    144e:	40 e0       	ldi	r20, 0x00	; 0
+    1450:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+    1454:	05 c0       	rjmp	.+10     	; 0x1460 <Button_Init+0x56>
 				break;
 		case(BUTTON2):
 				DIO_WRITE_STATUS(Button2_PORT, Button2_PIN, INPUT);
-    1232:	83 e0       	ldi	r24, 0x03	; 3
-    1234:	62 e0       	ldi	r22, 0x02	; 2
-    1236:	40 e0       	ldi	r20, 0x00	; 0
-    1238:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
+    1456:	83 e0       	ldi	r24, 0x03	; 3
+    1458:	62 e0       	ldi	r22, 0x02	; 2
+    145a:	40 e0       	ldi	r20, 0x00	; 0
+    145c:	0e 94 99 07 	call	0xf32	; 0xf32 <DIO_WRITE_STATUS>
 				break;
 		}
 }
-    123c:	0f 90       	pop	r0
-    123e:	0f 90       	pop	r0
-    1240:	0f 90       	pop	r0
-    1242:	cf 91       	pop	r28
-    1244:	df 91       	pop	r29
-    1246:	08 95       	ret
+    1460:	0f 90       	pop	r0
+    1462:	0f 90       	pop	r0
+    1464:	0f 90       	pop	r0
+    1466:	cf 91       	pop	r28
+    1468:	df 91       	pop	r29
+    146a:	08 95       	ret
 
-00001248 <Button_READ>:
+0000146c <Button_READ>:
 //--------------------------------------------------------------------------------------------------
 Buttom_Status Button_READ(Button_ID Button){
-    1248:	df 93       	push	r29
-    124a:	cf 93       	push	r28
-    124c:	00 d0       	rcall	.+0      	; 0x124e <Button_READ+0x6>
-    124e:	00 d0       	rcall	.+0      	; 0x1250 <Button_READ+0x8>
-    1250:	cd b7       	in	r28, 0x3d	; 61
-    1252:	de b7       	in	r29, 0x3e	; 62
-    1254:	8a 83       	std	Y+2, r24	; 0x02
+    146c:	df 93       	push	r29
+    146e:	cf 93       	push	r28
+    1470:	00 d0       	rcall	.+0      	; 0x1472 <Button_READ+0x6>
+    1472:	00 d0       	rcall	.+0      	; 0x1474 <Button_READ+0x8>
+    1474:	cd b7       	in	r28, 0x3d	; 61
+    1476:	de b7       	in	r29, 0x3e	; 62
+    1478:	8a 83       	std	Y+2, r24	; 0x02
 	Buttom_Status result;
 	switch(Button){
-    1256:	8a 81       	ldd	r24, Y+2	; 0x02
-    1258:	28 2f       	mov	r18, r24
-    125a:	30 e0       	ldi	r19, 0x00	; 0
-    125c:	3c 83       	std	Y+4, r19	; 0x04
-    125e:	2b 83       	std	Y+3, r18	; 0x03
-    1260:	8b 81       	ldd	r24, Y+3	; 0x03
-    1262:	9c 81       	ldd	r25, Y+4	; 0x04
-    1264:	81 30       	cpi	r24, 0x01	; 1
-    1266:	91 05       	cpc	r25, r1
-    1268:	79 f0       	breq	.+30     	; 0x1288 <Button_READ+0x40>
-    126a:	2b 81       	ldd	r18, Y+3	; 0x03
-    126c:	3c 81       	ldd	r19, Y+4	; 0x04
-    126e:	22 30       	cpi	r18, 0x02	; 2
-    1270:	31 05       	cpc	r19, r1
-    1272:	81 f0       	breq	.+32     	; 0x1294 <Button_READ+0x4c>
-    1274:	8b 81       	ldd	r24, Y+3	; 0x03
-    1276:	9c 81       	ldd	r25, Y+4	; 0x04
-    1278:	00 97       	sbiw	r24, 0x00	; 0
-    127a:	89 f4       	brne	.+34     	; 0x129e <Button_READ+0x56>
+    147a:	8a 81       	ldd	r24, Y+2	; 0x02
+    147c:	28 2f       	mov	r18, r24
+    147e:	30 e0       	ldi	r19, 0x00	; 0
+    1480:	3c 83       	std	Y+4, r19	; 0x04
+    1482:	2b 83       	std	Y+3, r18	; 0x03
+    1484:	8b 81       	ldd	r24, Y+3	; 0x03
+    1486:	9c 81       	ldd	r25, Y+4	; 0x04
+    1488:	81 30       	cpi	r24, 0x01	; 1
+    148a:	91 05       	cpc	r25, r1
+    148c:	79 f0       	breq	.+30     	; 0x14ac <Button_READ+0x40>
+    148e:	2b 81       	ldd	r18, Y+3	; 0x03
+    1490:	3c 81       	ldd	r19, Y+4	; 0x04
+    1492:	22 30       	cpi	r18, 0x02	; 2
+    1494:	31 05       	cpc	r19, r1
+    1496:	81 f0       	breq	.+32     	; 0x14b8 <Button_READ+0x4c>
+    1498:	8b 81       	ldd	r24, Y+3	; 0x03
+    149a:	9c 81       	ldd	r25, Y+4	; 0x04
+    149c:	00 97       	sbiw	r24, 0x00	; 0
+    149e:	89 f4       	brne	.+34     	; 0x14c2 <Button_READ+0x56>
 		case(BUTTON0):
 				result = DIO_READ_LEVEL(Button0_PORT, Button0_PIN);
-    127c:	81 e0       	ldi	r24, 0x01	; 1
-    127e:	60 e0       	ldi	r22, 0x00	; 0
-    1280:	0e 94 1a 07 	call	0xe34	; 0xe34 <DIO_READ_LEVEL>
-    1284:	89 83       	std	Y+1, r24	; 0x01
-    1286:	0b c0       	rjmp	.+22     	; 0x129e <Button_READ+0x56>
+    14a0:	81 e0       	ldi	r24, 0x01	; 1
+    14a2:	60 e0       	ldi	r22, 0x00	; 0
+    14a4:	0e 94 1a 07 	call	0xe34	; 0xe34 <DIO_READ_LEVEL>
+    14a8:	89 83       	std	Y+1, r24	; 0x01
+    14aa:	0b c0       	rjmp	.+22     	; 0x14c2 <Button_READ+0x56>
 				break;
 		case(BUTTON1):
 				result = DIO_READ_LEVEL(Button1_PORT, Button1_PIN);
-    1288:	81 e0       	ldi	r24, 0x01	; 1
-    128a:	64 e0       	ldi	r22, 0x04	; 4
-    128c:	0e 94 1a 07 	call	0xe34	; 0xe34 <DIO_READ_LEVEL>
-    1290:	89 83       	std	Y+1, r24	; 0x01
-    1292:	05 c0       	rjmp	.+10     	; 0x129e <Button_READ+0x56>
+    14ac:	81 e0       	ldi	r24, 0x01	; 1
+    14ae:	64 e0       	ldi	r22, 0x04	; 4
+    14b0:	0e 94 1a 07 	call	0xe34	; 0xe34 <DIO_READ_LEVEL>
+    14b4:	89 83       	std	Y+1, r24	; 0x01
+    14b6:	05 c0       	rjmp	.+10     	; 0x14c2 <Button_READ+0x56>
 				break;
 		case(BUTTON2):
 				result = DIO_READ_LEVEL(Button2_PORT, Button2_PIN);
-    1294:	83 e0       	ldi	r24, 0x03	; 3
-    1296:	62 e0       	ldi	r22, 0x02	; 2
-    1298:	0e 94 1a 07 	call	0xe34	; 0xe34 <DIO_READ_LEVEL>
-    129c:	89 83       	std	Y+1, r24	; 0x01
+    14b8:	83 e0       	ldi	r24, 0x03	; 3
+    14ba:	62 e0       	ldi	r22, 0x02	; 2
+    14bc:	0e 94 1a 07 	call	0xe34	; 0xe34 <DIO_READ_LEVEL>
+    14c0:	89 83       	std	Y+1, r24	; 0x01
 				break;
 		}
 	return result;
-    129e:	89 81       	ldd	r24, Y+1	; 0x01
+    14c2:	89 81       	ldd	r24, Y+1	; 0x01
 }
-    12a0:	0f 90       	pop	r0
-    12a2:	0f 90       	pop	r0
-    12a4:	0f 90       	pop	r0
-    12a6:	0f 90       	pop	r0
-    12a8:	cf 91       	pop	r28
-    12aa:	df 91       	pop	r29
-    12ac:	08 95       	ret
+    14c4:	0f 90       	pop	r0
+    14c6:	0f 90       	pop	r0
+    14c8:	0f 90       	pop	r0
+    14ca:	0f 90       	pop	r0
+    14cc:	cf 91       	pop	r28
+    14ce:	df 91       	pop	r29
+    14d0:	08 95       	ret
 
-000012ae <Button_Pullup_Enable>:
+000014d2 <Button_Pullup_Enable>:
 //--------------------------------------------------------------------------------------------------
 void Button_Pullup_Enable(Button_ID Button){
-    12ae:	df 93       	push	r29
-    12b0:	cf 93       	push	r28
-    12b2:	00 d0       	rcall	.+0      	; 0x12b4 <Button_Pullup_Enable+0x6>
-    12b4:	0f 92       	push	r0
-    12b6:	cd b7       	in	r28, 0x3d	; 61
-    12b8:	de b7       	in	r29, 0x3e	; 62
-    12ba:	89 83       	std	Y+1, r24	; 0x01
+    14d2:	df 93       	push	r29
+    14d4:	cf 93       	push	r28
+    14d6:	00 d0       	rcall	.+0      	; 0x14d8 <Button_Pullup_Enable+0x6>
+    14d8:	0f 92       	push	r0
+    14da:	cd b7       	in	r28, 0x3d	; 61
+    14dc:	de b7       	in	r29, 0x3e	; 62
+    14de:	89 83       	std	Y+1, r24	; 0x01
 	switch(Button){
-    12bc:	89 81       	ldd	r24, Y+1	; 0x01
-    12be:	28 2f       	mov	r18, r24
-    12c0:	30 e0       	ldi	r19, 0x00	; 0
-    12c2:	3b 83       	std	Y+3, r19	; 0x03
-    12c4:	2a 83       	std	Y+2, r18	; 0x02
-    12c6:	8a 81       	ldd	r24, Y+2	; 0x02
-    12c8:	9b 81       	ldd	r25, Y+3	; 0x03
-    12ca:	81 30       	cpi	r24, 0x01	; 1
-    12cc:	91 05       	cpc	r25, r1
-    12ce:	71 f0       	breq	.+28     	; 0x12ec <Button_Pullup_Enable+0x3e>
-    12d0:	2a 81       	ldd	r18, Y+2	; 0x02
-    12d2:	3b 81       	ldd	r19, Y+3	; 0x03
-    12d4:	22 30       	cpi	r18, 0x02	; 2
-    12d6:	31 05       	cpc	r19, r1
-    12d8:	71 f0       	breq	.+28     	; 0x12f6 <Button_Pullup_Enable+0x48>
-    12da:	8a 81       	ldd	r24, Y+2	; 0x02
-    12dc:	9b 81       	ldd	r25, Y+3	; 0x03
-    12de:	00 97       	sbiw	r24, 0x00	; 0
-    12e0:	71 f4       	brne	.+28     	; 0x12fe <Button_Pullup_Enable+0x50>
+    14e0:	89 81       	ldd	r24, Y+1	; 0x01
+    14e2:	28 2f       	mov	r18, r24
+    14e4:	30 e0       	ldi	r19, 0x00	; 0
+    14e6:	3b 83       	std	Y+3, r19	; 0x03
+    14e8:	2a 83       	std	Y+2, r18	; 0x02
+    14ea:	8a 81       	ldd	r24, Y+2	; 0x02
+    14ec:	9b 81       	ldd	r25, Y+3	; 0x03
+    14ee:	81 30       	cpi	r24, 0x01	; 1
+    14f0:	91 05       	cpc	r25, r1
+    14f2:	71 f0       	breq	.+28     	; 0x1510 <Button_Pullup_Enable+0x3e>
+    14f4:	2a 81       	ldd	r18, Y+2	; 0x02
+    14f6:	3b 81       	ldd	r19, Y+3	; 0x03
+    14f8:	22 30       	cpi	r18, 0x02	; 2
+    14fa:	31 05       	cpc	r19, r1
+    14fc:	71 f0       	breq	.+28     	; 0x151a <Button_Pullup_Enable+0x48>
+    14fe:	8a 81       	ldd	r24, Y+2	; 0x02
+    1500:	9b 81       	ldd	r25, Y+3	; 0x03
+    1502:	00 97       	sbiw	r24, 0x00	; 0
+    1504:	71 f4       	brne	.+28     	; 0x1522 <Button_Pullup_Enable+0x50>
 		case(BUTTON0):
 				DIO_ENABLE_PULLUP(Button0_PORT, Button0_PIN);
-    12e2:	81 e0       	ldi	r24, 0x01	; 1
-    12e4:	60 e0       	ldi	r22, 0x00	; 0
-    12e6:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_ENABLE_PULLUP>
-    12ea:	09 c0       	rjmp	.+18     	; 0x12fe <Button_Pullup_Enable+0x50>
+    1506:	81 e0       	ldi	r24, 0x01	; 1
+    1508:	60 e0       	ldi	r22, 0x00	; 0
+    150a:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_ENABLE_PULLUP>
+    150e:	09 c0       	rjmp	.+18     	; 0x1522 <Button_Pullup_Enable+0x50>
 				break;
 		case(BUTTON1):
 				DIO_ENABLE_PULLUP(Button1_PORT, Button1_PIN);
-    12ec:	81 e0       	ldi	r24, 0x01	; 1
-    12ee:	64 e0       	ldi	r22, 0x04	; 4
-    12f0:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_ENABLE_PULLUP>
-    12f4:	04 c0       	rjmp	.+8      	; 0x12fe <Button_Pullup_Enable+0x50>
+    1510:	81 e0       	ldi	r24, 0x01	; 1
+    1512:	64 e0       	ldi	r22, 0x04	; 4
+    1514:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_ENABLE_PULLUP>
+    1518:	04 c0       	rjmp	.+8      	; 0x1522 <Button_Pullup_Enable+0x50>
 				break;
 		case(BUTTON2):
 				DIO_ENABLE_PULLUP(Button2_PORT, Button2_PIN);
-    12f6:	83 e0       	ldi	r24, 0x03	; 3
-    12f8:	62 e0       	ldi	r22, 0x02	; 2
-    12fa:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_ENABLE_PULLUP>
+    151a:	83 e0       	ldi	r24, 0x03	; 3
+    151c:	62 e0       	ldi	r22, 0x02	; 2
+    151e:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_ENABLE_PULLUP>
 				break;
 		}
 }
-    12fe:	0f 90       	pop	r0
-    1300:	0f 90       	pop	r0
-    1302:	0f 90       	pop	r0
-    1304:	cf 91       	pop	r28
-    1306:	df 91       	pop	r29
-    1308:	08 95       	ret
+    1522:	0f 90       	pop	r0
+    1524:	0f 90       	pop	r0
+    1526:	0f 90       	pop	r0
+    1528:	cf 91       	pop	r28
+    152a:	df 91       	pop	r29
+    152c:	08 95       	ret
 
-0000130a <Button_Pullup_Disable>:
+0000152e <Button_Pullup_Disable>:
 //--------------------------------------------------------------------------------------------------
 void Button_Pullup_Disable(Button_ID Button){
-    130a:	df 93       	push	r29
-    130c:	cf 93       	push	r28
-    130e:	00 d0       	rcall	.+0      	; 0x1310 <Button_Pullup_Disable+0x6>
-    1310:	0f 92       	push	r0
-    1312:	cd b7       	in	r28, 0x3d	; 61
-    1314:	de b7       	in	r29, 0x3e	; 62
-    1316:	89 83       	std	Y+1, r24	; 0x01
+    152e:	df 93       	push	r29
+    1530:	cf 93       	push	r28
+    1532:	00 d0       	rcall	.+0      	; 0x1534 <Button_Pullup_Disable+0x6>
+    1534:	0f 92       	push	r0
+    1536:	cd b7       	in	r28, 0x3d	; 61
+    1538:	de b7       	in	r29, 0x3e	; 62
+    153a:	89 83       	std	Y+1, r24	; 0x01
 	switch(Button){
-    1318:	89 81       	ldd	r24, Y+1	; 0x01
-    131a:	28 2f       	mov	r18, r24
-    131c:	30 e0       	ldi	r19, 0x00	; 0
-    131e:	3b 83       	std	Y+3, r19	; 0x03
-    1320:	2a 83       	std	Y+2, r18	; 0x02
-    1322:	8a 81       	ldd	r24, Y+2	; 0x02
-    1324:	9b 81       	ldd	r25, Y+3	; 0x03
-    1326:	81 30       	cpi	r24, 0x01	; 1
-    1328:	91 05       	cpc	r25, r1
-    132a:	71 f0       	breq	.+28     	; 0x1348 <Button_Pullup_Disable+0x3e>
-    132c:	2a 81       	ldd	r18, Y+2	; 0x02
-    132e:	3b 81       	ldd	r19, Y+3	; 0x03
-    1330:	22 30       	cpi	r18, 0x02	; 2
-    1332:	31 05       	cpc	r19, r1
-    1334:	71 f0       	breq	.+28     	; 0x1352 <Button_Pullup_Disable+0x48>
-    1336:	8a 81       	ldd	r24, Y+2	; 0x02
-    1338:	9b 81       	ldd	r25, Y+3	; 0x03
-    133a:	00 97       	sbiw	r24, 0x00	; 0
-    133c:	71 f4       	brne	.+28     	; 0x135a <Button_Pullup_Disable+0x50>
+    153c:	89 81       	ldd	r24, Y+1	; 0x01
+    153e:	28 2f       	mov	r18, r24
+    1540:	30 e0       	ldi	r19, 0x00	; 0
+    1542:	3b 83       	std	Y+3, r19	; 0x03
+    1544:	2a 83       	std	Y+2, r18	; 0x02
+    1546:	8a 81       	ldd	r24, Y+2	; 0x02
+    1548:	9b 81       	ldd	r25, Y+3	; 0x03
+    154a:	81 30       	cpi	r24, 0x01	; 1
+    154c:	91 05       	cpc	r25, r1
+    154e:	71 f0       	breq	.+28     	; 0x156c <Button_Pullup_Disable+0x3e>
+    1550:	2a 81       	ldd	r18, Y+2	; 0x02
+    1552:	3b 81       	ldd	r19, Y+3	; 0x03
+    1554:	22 30       	cpi	r18, 0x02	; 2
+    1556:	31 05       	cpc	r19, r1
+    1558:	71 f0       	breq	.+28     	; 0x1576 <Button_Pullup_Disable+0x48>
+    155a:	8a 81       	ldd	r24, Y+2	; 0x02
+    155c:	9b 81       	ldd	r25, Y+3	; 0x03
+    155e:	00 97       	sbiw	r24, 0x00	; 0
+    1560:	71 f4       	brne	.+28     	; 0x157e <Button_Pullup_Disable+0x50>
 		case(BUTTON0):
 				DIO_DISABLE_PULLUP(Button0_PORT, Button0_PIN);
-    133e:	81 e0       	ldi	r24, 0x01	; 1
-    1340:	60 e0       	ldi	r22, 0x00	; 0
-    1342:	0e 94 47 06 	call	0xc8e	; 0xc8e <DIO_DISABLE_PULLUP>
-    1346:	09 c0       	rjmp	.+18     	; 0x135a <Button_Pullup_Disable+0x50>
+    1562:	81 e0       	ldi	r24, 0x01	; 1
+    1564:	60 e0       	ldi	r22, 0x00	; 0
+    1566:	0e 94 47 06 	call	0xc8e	; 0xc8e <DIO_DISABLE_PULLUP>
+    156a:	09 c0       	rjmp	.+18     	; 0x157e <Button_Pullup_Disable+0x50>
 				break;
 		case(BUTTON1):
 				DIO_DISABLE_PULLUP(Button1_PORT, Button1_PIN);
-    1348:	81 e0       	ldi	r24, 0x01	; 1
-    134a:	64 e0       	ldi	r22, 0x04	; 4
-    134c:	0e 94 47 06 	call	0xc8e	; 0xc8e <DIO_DISABLE_PULLUP>
-    1350:	04 c0       	rjmp	.+8      	; 0x135a <Button_Pullup_Disable+0x50>
+    156c:	81 e0       	ldi	r24, 0x01	; 1
+    156e:	64 e0       	ldi	r22, 0x04	; 4
+    1570:	0e 94 47 06 	call	0xc8e	; 0xc8e <DIO_DISABLE_PULLUP>
+    1574:	04 c0       	rjmp	.+8      	; 0x157e <Button_Pullup_Disable+0x50>
 				break;
 		case(BUTTON2):
 				DIO_DISABLE_PULLUP(Button2_PORT, Button2_PIN);
-    1352:	83 e0       	ldi	r24, 0x03	; 3
-    1354:	62 e0       	ldi	r22, 0x02	; 2
-    1356:	0e 94 47 06 	call	0xc8e	; 0xc8e <DIO_DISABLE_PULLUP>
+    1576:	83 e0       	ldi	r24, 0x03	; 3
+    1578:	62 e0       	ldi	r22, 0x02	; 2
+    157a:	0e 94 47 06 	call	0xc8e	; 0xc8e <DIO_DISABLE_PULLUP>
 				break;
 		}
 }
-    135a:	0f 90       	pop	r0
-    135c:	0f 90       	pop	r0
-    135e:	0f 90       	pop	r0
-    1360:	cf 91       	pop	r28
-    1362:	df 91       	pop	r29
-    1364:	08 95       	ret
+    157e:	0f 90       	pop	r0
+    1580:	0f 90       	pop	r0
+    1582:	0f 90       	pop	r0
+    1584:	cf 91       	pop	r28
+    1586:	df 91       	pop	r29
+    1588:	08 95       	ret
 
-00001366 <main>:
+0000158a <main>:
 #include "Main_Types.h"
 #include "Services.h"
 //#include "util/delay.h"
 
 
 int main (){
-    1366:	df 93       	push	r29
-    1368:	cf 93       	push	r28
-    136a:	00 d0       	rcall	.+0      	; 0x136c <main+0x6>
-    136c:	cd b7       	in	r28, 0x3d	; 61
-    136e:	de b7       	in	r29, 0x3e	; 62
+    158a:	df 93       	push	r29
+    158c:	cf 93       	push	r28
+    158e:	00 d0       	rcall	.+0      	; 0x1590 <main+0x6>
+    1590:	cd b7       	in	r28, 0x3d	; 61
+    1592:	de b7       	in	r29, 0x3e	; 62
 	/*--------------------------------------------------------------------------------------------------------------*/
 	/*------------------------------------------System Modules Initialization---------------------------------------*/
 	/*--------------------------------------------------------------------------------------------------------------*/
 	Timer0_Init();
-    1370:	0e 94 16 03 	call	0x62c	; 0x62c <Timer0_Init>
+    1594:	0e 94 16 03 	call	0x62c	; 0x62c <Timer0_Init>
 	Timer1_Init();
-    1374:	0e 94 38 02 	call	0x470	; 0x470 <Timer1_Init>
+    1598:	0e 94 38 02 	call	0x470	; 0x470 <Timer1_Init>
 	Timer2_Init();
-    1378:	0e 94 6e 01 	call	0x2dc	; 0x2dc <Timer2_Init>
+    159c:	0e 94 6e 01 	call	0x2dc	; 0x2dc <Timer2_Init>
 	Heater_Init();
-    137c:	0e 94 a9 08 	call	0x1152	; 0x1152 <Heater_Init>
+    15a0:	0e 94 bb 09 	call	0x1376	; 0x1376 <Heater_Init>
 	Cooler_Init();
-    1380:	0e 94 cd 08 	call	0x119a	; 0x119a <Cooler_Init>
+    15a4:	0e 94 df 09 	call	0x13be	; 0x13be <Cooler_Init>
 	//	TempSen_Init();
-	//	SSD_Init();
+	SSD_Init();
+    15a8:	0e 94 ec 08 	call	0x11d8	; 0x11d8 <SSD_Init>
 	Button_Init(BUTTON0);
-    1384:	80 e0       	ldi	r24, 0x00	; 0
-    1386:	0e 94 f3 08 	call	0x11e6	; 0x11e6 <Button_Init>
+    15ac:	80 e0       	ldi	r24, 0x00	; 0
+    15ae:	0e 94 05 0a 	call	0x140a	; 0x140a <Button_Init>
 	Button_Init(BUTTON1);
-    138a:	81 e0       	ldi	r24, 0x01	; 1
-    138c:	0e 94 f3 08 	call	0x11e6	; 0x11e6 <Button_Init>
+    15b2:	81 e0       	ldi	r24, 0x01	; 1
+    15b4:	0e 94 05 0a 	call	0x140a	; 0x140a <Button_Init>
 	Button_Init(BUTTON2);
-    1390:	82 e0       	ldi	r24, 0x02	; 2
-    1392:	0e 94 f3 08 	call	0x11e6	; 0x11e6 <Button_Init>
+    15b8:	82 e0       	ldi	r24, 0x02	; 2
+    15ba:	0e 94 05 0a 	call	0x140a	; 0x140a <Button_Init>
 	LED_Init();
-    1396:	0e 94 7c 08 	call	0x10f8	; 0x10f8 <LED_Init>
+    15be:	0e 94 8e 09 	call	0x131c	; 0x131c <LED_Init>
 	/*--------------------------------------------------------------------------------------------------------------*/
 	/*------------------------------------------System Status Initialization----------------------------------------*/
 	/*--------------------------------------------------------------------------------------------------------------*/
 	Switch SystemStatus = OFF;
-    139a:	19 82       	std	Y+1, r1	; 0x01
+    15c2:	19 82       	std	Y+1, r1	; 0x01
 	ButtonEnable = TRUE;
-    139c:	81 e0       	ldi	r24, 0x01	; 1
-    139e:	80 93 6e 00 	sts	0x006E, r24
+    15c4:	81 e0       	ldi	r24, 0x01	; 1
+    15c6:	80 93 72 00 	sts	0x0072, r24
 	Mode = Temp_Control;
-    13a2:	10 92 6d 00 	sts	0x006D, r1
+    15ca:	10 92 71 00 	sts	0x0071, r1
 	Curr_Temp = 0;
-    13a6:	10 92 6a 00 	sts	0x006A, r1
+    15ce:	10 92 6e 00 	sts	0x006E, r1
 	Restore_Temp();
-    13aa:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <Restore_Temp>
+    15d2:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <Restore_Temp>
 	Update_Temp_En = TRUE;
-    13ae:	81 e0       	ldi	r24, 0x01	; 1
-    13b0:	80 93 6b 00 	sts	0x006B, r24
+    15d6:	81 e0       	ldi	r24, 0x01	; 1
+    15d8:	80 93 6f 00 	sts	0x006F, r24
 	Blink_Status = FALSE;
-    13b4:	10 92 69 00 	sts	0x0069, r1
+    15dc:	10 92 6d 00 	sts	0x006D, r1
 	Timer2_Start(TIMER2_1024_);
-    13b8:	87 e0       	ldi	r24, 0x07	; 7
-    13ba:	0e 94 83 01 	call	0x306	; 0x306 <Timer2_Start>
+    15e0:	87 e0       	ldi	r24, 0x07	; 7
+    15e2:	0e 94 83 01 	call	0x306	; 0x306 <Timer2_Start>
 	Timer2_EnableInterrupt();
-    13be:	0e 94 15 02 	call	0x42a	; 0x42a <Timer2_EnableInterrupt>
-
+    15e6:	0e 94 15 02 	call	0x42a	; 0x42a <Timer2_EnableInterrupt>
+		SSD_DisplayNumber(54);*/
 
 
 		/*-------------------------------System ON/OFF Control Section----------------------------------------------*/
 
 		if(Button_READ(BUTTON1)){
-    13c2:	81 e0       	ldi	r24, 0x01	; 1
-    13c4:	0e 94 24 09 	call	0x1248	; 0x1248 <Button_READ>
-    13c8:	88 23       	and	r24, r24
-    13ca:	71 f0       	breq	.+28     	; 0x13e8 <main+0x82>
+    15ea:	81 e0       	ldi	r24, 0x01	; 1
+    15ec:	0e 94 36 0a 	call	0x146c	; 0x146c <Button_READ>
+    15f0:	88 23       	and	r24, r24
+    15f2:	71 f0       	breq	.+28     	; 0x1610 <main+0x86>
 			if(ButtonEnable == TRUE){
-    13cc:	80 91 6e 00 	lds	r24, 0x006E
-    13d0:	81 30       	cpi	r24, 0x01	; 1
-    13d2:	41 f4       	brne	.+16     	; 0x13e4 <main+0x7e>
+    15f4:	80 91 72 00 	lds	r24, 0x0072
+    15f8:	81 30       	cpi	r24, 0x01	; 1
+    15fa:	41 f4       	brne	.+16     	; 0x160c <main+0x82>
 				SystemStatus = !SystemStatus;
-    13d4:	1a 82       	std	Y+2, r1	; 0x02
-    13d6:	89 81       	ldd	r24, Y+1	; 0x01
-    13d8:	88 23       	and	r24, r24
-    13da:	11 f4       	brne	.+4      	; 0x13e0 <main+0x7a>
-    13dc:	81 e0       	ldi	r24, 0x01	; 1
-    13de:	8a 83       	std	Y+2, r24	; 0x02
-    13e0:	8a 81       	ldd	r24, Y+2	; 0x02
-    13e2:	89 83       	std	Y+1, r24	; 0x01
+    15fc:	1a 82       	std	Y+2, r1	; 0x02
+    15fe:	89 81       	ldd	r24, Y+1	; 0x01
+    1600:	88 23       	and	r24, r24
+    1602:	11 f4       	brne	.+4      	; 0x1608 <main+0x7e>
+    1604:	81 e0       	ldi	r24, 0x01	; 1
+    1606:	8a 83       	std	Y+2, r24	; 0x02
+    1608:	8a 81       	ldd	r24, Y+2	; 0x02
+    160a:	89 83       	std	Y+1, r24	; 0x01
 			}
 			Debounce_Handler();
-    13e4:	0e 94 60 01 	call	0x2c0	; 0x2c0 <Debounce_Handler>
+    160c:	0e 94 60 01 	call	0x2c0	; 0x2c0 <Debounce_Handler>
 		}
 
 		if(SystemStatus==OFF){
-    13e8:	89 81       	ldd	r24, Y+1	; 0x01
-    13ea:	88 23       	and	r24, r24
-    13ec:	29 f4       	brne	.+10     	; 0x13f8 <main+0x92>
+    1610:	89 81       	ldd	r24, Y+1	; 0x01
+    1612:	88 23       	and	r24, r24
+    1614:	39 f4       	brne	.+14     	; 0x1624 <main+0x9a>
 			Heater_OFF();
-    13ee:	0e 94 c0 08 	call	0x1180	; 0x1180 <Heater_OFF>
+    1616:	0e 94 d2 09 	call	0x13a4	; 0x13a4 <Heater_OFF>
 			Cooler_OFF();
-    13f2:	0e 94 e6 08 	call	0x11cc	; 0x11cc <Cooler_OFF>
-    13f6:	e5 cf       	rjmp	.-54     	; 0x13c2 <main+0x5c>
+    161a:	0e 94 f8 09 	call	0x13f0	; 0x13f0 <Cooler_OFF>
+			SSD_Stop();
+    161e:	0e 94 7f 09 	call	0x12fe	; 0x12fe <SSD_Stop>
+    1622:	e3 cf       	rjmp	.-58     	; 0x15ea <main+0x60>
 			continue;
 		}
 
 		/*-------------------------------Reading Currant Temperature Section----------------------------------------*/
 
 		if(Update_Temp_En == TRUE){
-    13f8:	80 91 6b 00 	lds	r24, 0x006B
-    13fc:	81 30       	cpi	r24, 0x01	; 1
-    13fe:	11 f4       	brne	.+4      	; 0x1404 <main+0x9e>
+    1624:	80 91 6f 00 	lds	r24, 0x006F
+    1628:	81 30       	cpi	r24, 0x01	; 1
+    162a:	11 f4       	brne	.+4      	; 0x1630 <main+0xa6>
 			Update_Temp();
-    1400:	0e 94 88 00 	call	0x110	; 0x110 <Update_Temp>
+    162c:	0e 94 88 00 	call	0x110	; 0x110 <Update_Temp>
 		}
 
 		/*-------------------------------Changing desired Temperature Section---------------------------------------*/
 
 		if(Button_READ(BUTTON0)||Button_READ(BUTTON2)){ // Change desired temperature +/-
-    1404:	80 e0       	ldi	r24, 0x00	; 0
-    1406:	0e 94 24 09 	call	0x1248	; 0x1248 <Button_READ>
-    140a:	88 23       	and	r24, r24
-    140c:	29 f4       	brne	.+10     	; 0x1418 <main+0xb2>
-    140e:	82 e0       	ldi	r24, 0x02	; 2
-    1410:	0e 94 24 09 	call	0x1248	; 0x1248 <Button_READ>
-    1414:	88 23       	and	r24, r24
-    1416:	e9 f0       	breq	.+58     	; 0x1452 <main+0xec>
+    1630:	80 e0       	ldi	r24, 0x00	; 0
+    1632:	0e 94 36 0a 	call	0x146c	; 0x146c <Button_READ>
+    1636:	88 23       	and	r24, r24
+    1638:	29 f4       	brne	.+10     	; 0x1644 <main+0xba>
+    163a:	82 e0       	ldi	r24, 0x02	; 2
+    163c:	0e 94 36 0a 	call	0x146c	; 0x146c <Button_READ>
+    1640:	88 23       	and	r24, r24
+    1642:	e9 f0       	breq	.+58     	; 0x167e <main+0xf4>
 			if(ButtonEnable == TRUE){
-    1418:	80 91 6e 00 	lds	r24, 0x006E
-    141c:	81 30       	cpi	r24, 0x01	; 1
-    141e:	b9 f4       	brne	.+46     	; 0x144e <main+0xe8>
+    1644:	80 91 72 00 	lds	r24, 0x0072
+    1648:	81 30       	cpi	r24, 0x01	; 1
+    164a:	b9 f4       	brne	.+46     	; 0x167a <main+0xf0>
 
 				Mode_Handler();
-    1420:	0e 94 1b 01 	call	0x236	; 0x236 <Mode_Handler>
+    164c:	0e 94 1b 01 	call	0x236	; 0x236 <Mode_Handler>
 				Mode = Temp_Set;
-    1424:	81 e0       	ldi	r24, 0x01	; 1
-    1426:	80 93 6d 00 	sts	0x006D, r24
+    1650:	81 e0       	ldi	r24, 0x01	; 1
+    1652:	80 93 71 00 	sts	0x0071, r24
 
 				if(Button_READ(BUTTON0)){
-    142a:	80 e0       	ldi	r24, 0x00	; 0
-    142c:	0e 94 24 09 	call	0x1248	; 0x1248 <Button_READ>
-    1430:	88 23       	and	r24, r24
-    1432:	31 f0       	breq	.+12     	; 0x1440 <main+0xda>
+    1656:	80 e0       	ldi	r24, 0x00	; 0
+    1658:	0e 94 36 0a 	call	0x146c	; 0x146c <Button_READ>
+    165c:	88 23       	and	r24, r24
+    165e:	31 f0       	breq	.+12     	; 0x166c <main+0xe2>
 					Des_Temp +=5;
-    1434:	80 91 6c 00 	lds	r24, 0x006C
-    1438:	8b 5f       	subi	r24, 0xFB	; 251
-    143a:	80 93 6c 00 	sts	0x006C, r24
-    143e:	05 c0       	rjmp	.+10     	; 0x144a <main+0xe4>
+    1660:	80 91 70 00 	lds	r24, 0x0070
+    1664:	8b 5f       	subi	r24, 0xFB	; 251
+    1666:	80 93 70 00 	sts	0x0070, r24
+    166a:	05 c0       	rjmp	.+10     	; 0x1676 <main+0xec>
 				}else{
 					Des_Temp -=5;
-    1440:	80 91 6c 00 	lds	r24, 0x006C
-    1444:	85 50       	subi	r24, 0x05	; 5
-    1446:	80 93 6c 00 	sts	0x006C, r24
+    166c:	80 91 70 00 	lds	r24, 0x0070
+    1670:	85 50       	subi	r24, 0x05	; 5
+    1672:	80 93 70 00 	sts	0x0070, r24
 				}
 				Store_Temp();
-    144a:	0e 94 e5 00 	call	0x1ca	; 0x1ca <Store_Temp>
+    1676:	0e 94 e5 00 	call	0x1ca	; 0x1ca <Store_Temp>
 
 			}
 			Debounce_Handler();
-    144e:	0e 94 60 01 	call	0x2c0	; 0x2c0 <Debounce_Handler>
+    167a:	0e 94 60 01 	call	0x2c0	; 0x2c0 <Debounce_Handler>
 		}
 
 		/*-------------------------------Seven Segments Display Control Section-------------------------------------*/
 
 		if(Mode==Temp_Control){
-    1452:	80 91 6d 00 	lds	r24, 0x006D
-    1456:	88 23       	and	r24, r24
-    1458:	69 f0       	breq	.+26     	; 0x1474 <main+0x10e>
-			//SSD_Display(Des_Temp);
+    167e:	80 91 71 00 	lds	r24, 0x0071
+    1682:	88 23       	and	r24, r24
+    1684:	29 f4       	brne	.+10     	; 0x1690 <main+0x106>
+			SSD_DisplayNumber(Curr_Temp);
+    1686:	80 91 6e 00 	lds	r24, 0x006E
+    168a:	0e 94 11 09 	call	0x1222	; 0x1222 <SSD_DisplayNumber>
+    168e:	11 c0       	rjmp	.+34     	; 0x16b2 <main+0x128>
 		}else if(Mode==Temp_Set && Blink_Status==TRUE){
-    145a:	80 91 6d 00 	lds	r24, 0x006D
-    145e:	81 30       	cpi	r24, 0x01	; 1
-    1460:	39 f4       	brne	.+14     	; 0x1470 <main+0x10a>
-    1462:	80 91 69 00 	lds	r24, 0x0069
-    1466:	81 30       	cpi	r24, 0x01	; 1
-    1468:	19 f4       	brne	.+6      	; 0x1470 <main+0x10a>
-			//SSD_Display(Curr_Temp);
+    1690:	80 91 71 00 	lds	r24, 0x0071
+    1694:	81 30       	cpi	r24, 0x01	; 1
+    1696:	59 f4       	brne	.+22     	; 0x16ae <main+0x124>
+    1698:	80 91 6d 00 	lds	r24, 0x006D
+    169c:	81 30       	cpi	r24, 0x01	; 1
+    169e:	39 f4       	brne	.+14     	; 0x16ae <main+0x124>
+			SSD_DisplayNumber(Des_Temp);
+    16a0:	80 91 70 00 	lds	r24, 0x0070
+    16a4:	0e 94 11 09 	call	0x1222	; 0x1222 <SSD_DisplayNumber>
 			LED_ON();
-    146a:	0e 94 88 08 	call	0x1110	; 0x1110 <LED_ON>
-    146e:	02 c0       	rjmp	.+4      	; 0x1474 <main+0x10e>
+    16a8:	0e 94 9a 09 	call	0x1334	; 0x1334 <LED_ON>
+    16ac:	02 c0       	rjmp	.+4      	; 0x16b2 <main+0x128>
 		}else{
 			LED_OFF();
-    1470:	0e 94 93 08 	call	0x1126	; 0x1126 <LED_OFF>
+    16ae:	0e 94 a5 09 	call	0x134a	; 0x134a <LED_OFF>
 		}
 
 		/*-------------------------------Heating/Cooling elements Control Section-------------------------------------*/
 
 		if((Curr_Temp+5)<Des_Temp){
-    1474:	80 91 6a 00 	lds	r24, 0x006A
-    1478:	88 2f       	mov	r24, r24
-    147a:	90 e0       	ldi	r25, 0x00	; 0
-    147c:	9c 01       	movw	r18, r24
-    147e:	2b 5f       	subi	r18, 0xFB	; 251
-    1480:	3f 4f       	sbci	r19, 0xFF	; 255
-    1482:	80 91 6c 00 	lds	r24, 0x006C
-    1486:	88 2f       	mov	r24, r24
-    1488:	90 e0       	ldi	r25, 0x00	; 0
-    148a:	28 17       	cp	r18, r24
-    148c:	39 07       	cpc	r19, r25
-    148e:	64 f4       	brge	.+24     	; 0x14a8 <main+0x142>
+    16b2:	80 91 6e 00 	lds	r24, 0x006E
+    16b6:	88 2f       	mov	r24, r24
+    16b8:	90 e0       	ldi	r25, 0x00	; 0
+    16ba:	9c 01       	movw	r18, r24
+    16bc:	2b 5f       	subi	r18, 0xFB	; 251
+    16be:	3f 4f       	sbci	r19, 0xFF	; 255
+    16c0:	80 91 70 00 	lds	r24, 0x0070
+    16c4:	88 2f       	mov	r24, r24
+    16c6:	90 e0       	ldi	r25, 0x00	; 0
+    16c8:	28 17       	cp	r18, r24
+    16ca:	39 07       	cpc	r19, r25
+    16cc:	64 f4       	brge	.+24     	; 0x16e6 <main+0x15c>
 			Heater_ON();
-    1490:	0e 94 b5 08 	call	0x116a	; 0x116a <Heater_ON>
+    16ce:	0e 94 c7 09 	call	0x138e	; 0x138e <Heater_ON>
 			if(Blink_Status==TRUE){
-    1494:	80 91 69 00 	lds	r24, 0x0069
-    1498:	81 30       	cpi	r24, 0x01	; 1
-    149a:	19 f4       	brne	.+6      	; 0x14a2 <main+0x13c>
+    16d2:	80 91 6d 00 	lds	r24, 0x006D
+    16d6:	81 30       	cpi	r24, 0x01	; 1
+    16d8:	19 f4       	brne	.+6      	; 0x16e0 <main+0x156>
 				LED_ON();
-    149c:	0e 94 88 08 	call	0x1110	; 0x1110 <LED_ON>
-    14a0:	90 cf       	rjmp	.-224    	; 0x13c2 <main+0x5c>
+    16da:	0e 94 9a 09 	call	0x1334	; 0x1334 <LED_ON>
+    16de:	85 cf       	rjmp	.-246    	; 0x15ea <main+0x60>
 			}else{
 				LED_OFF();
-    14a2:	0e 94 93 08 	call	0x1126	; 0x1126 <LED_OFF>
-    14a6:	8d cf       	rjmp	.-230    	; 0x13c2 <main+0x5c>
+    16e0:	0e 94 a5 09 	call	0x134a	; 0x134a <LED_OFF>
+    16e4:	82 cf       	rjmp	.-252    	; 0x15ea <main+0x60>
 			}
 		}else if((Curr_Temp-5)>Des_Temp){
-    14a8:	80 91 6a 00 	lds	r24, 0x006A
-    14ac:	88 2f       	mov	r24, r24
-    14ae:	90 e0       	ldi	r25, 0x00	; 0
-    14b0:	9c 01       	movw	r18, r24
-    14b2:	25 50       	subi	r18, 0x05	; 5
-    14b4:	30 40       	sbci	r19, 0x00	; 0
-    14b6:	80 91 6c 00 	lds	r24, 0x006C
-    14ba:	88 2f       	mov	r24, r24
-    14bc:	90 e0       	ldi	r25, 0x00	; 0
-    14be:	82 17       	cp	r24, r18
-    14c0:	93 07       	cpc	r25, r19
-    14c2:	1c f4       	brge	.+6      	; 0x14ca <main+0x164>
+    16e6:	80 91 6e 00 	lds	r24, 0x006E
+    16ea:	88 2f       	mov	r24, r24
+    16ec:	90 e0       	ldi	r25, 0x00	; 0
+    16ee:	9c 01       	movw	r18, r24
+    16f0:	25 50       	subi	r18, 0x05	; 5
+    16f2:	30 40       	sbci	r19, 0x00	; 0
+    16f4:	80 91 70 00 	lds	r24, 0x0070
+    16f8:	88 2f       	mov	r24, r24
+    16fa:	90 e0       	ldi	r25, 0x00	; 0
+    16fc:	82 17       	cp	r24, r18
+    16fe:	93 07       	cpc	r25, r19
+    1700:	1c f4       	brge	.+6      	; 0x1708 <main+0x17e>
 			Cooler_ON();
-    14c4:	0e 94 d9 08 	call	0x11b2	; 0x11b2 <Cooler_ON>
-    14c8:	7c cf       	rjmp	.-264    	; 0x13c2 <main+0x5c>
+    1702:	0e 94 eb 09 	call	0x13d6	; 0x13d6 <Cooler_ON>
+    1706:	71 cf       	rjmp	.-286    	; 0x15ea <main+0x60>
 		}else{
 			Cooler_OFF();
-    14ca:	0e 94 e6 08 	call	0x11cc	; 0x11cc <Cooler_OFF>
+    1708:	0e 94 f8 09 	call	0x13f0	; 0x13f0 <Cooler_OFF>
 			Heater_OFF();
-    14ce:	0e 94 c0 08 	call	0x1180	; 0x1180 <Heater_OFF>
-    14d2:	77 cf       	rjmp	.-274    	; 0x13c2 <main+0x5c>
+    170c:	0e 94 d2 09 	call	0x13a4	; 0x13a4 <Heater_OFF>
+    1710:	6c cf       	rjmp	.-296    	; 0x15ea <main+0x60>
 
-000014d4 <__udivmodqi4>:
-    14d4:	99 1b       	sub	r25, r25
-    14d6:	79 e0       	ldi	r23, 0x09	; 9
-    14d8:	04 c0       	rjmp	.+8      	; 0x14e2 <__udivmodqi4_ep>
+00001712 <__udivmodqi4>:
+    1712:	99 1b       	sub	r25, r25
+    1714:	79 e0       	ldi	r23, 0x09	; 9
+    1716:	04 c0       	rjmp	.+8      	; 0x1720 <__udivmodqi4_ep>
 
-000014da <__udivmodqi4_loop>:
-    14da:	99 1f       	adc	r25, r25
-    14dc:	96 17       	cp	r25, r22
-    14de:	08 f0       	brcs	.+2      	; 0x14e2 <__udivmodqi4_ep>
-    14e0:	96 1b       	sub	r25, r22
+00001718 <__udivmodqi4_loop>:
+    1718:	99 1f       	adc	r25, r25
+    171a:	96 17       	cp	r25, r22
+    171c:	08 f0       	brcs	.+2      	; 0x1720 <__udivmodqi4_ep>
+    171e:	96 1b       	sub	r25, r22
 
-000014e2 <__udivmodqi4_ep>:
-    14e2:	88 1f       	adc	r24, r24
-    14e4:	7a 95       	dec	r23
-    14e6:	c9 f7       	brne	.-14     	; 0x14da <__udivmodqi4_loop>
-    14e8:	80 95       	com	r24
-    14ea:	08 95       	ret
+00001720 <__udivmodqi4_ep>:
+    1720:	88 1f       	adc	r24, r24
+    1722:	7a 95       	dec	r23
+    1724:	c9 f7       	brne	.-14     	; 0x1718 <__udivmodqi4_loop>
+    1726:	80 95       	com	r24
+    1728:	08 95       	ret
 
-000014ec <_exit>:
-    14ec:	f8 94       	cli
+0000172a <_exit>:
+    172a:	f8 94       	cli
 
-000014ee <__stop_program>:
-    14ee:	ff cf       	rjmp	.-2      	; 0x14ee <__stop_program>
+0000172c <__stop_program>:
+    172c:	ff cf       	rjmp	.-2      	; 0x172c <__stop_program>

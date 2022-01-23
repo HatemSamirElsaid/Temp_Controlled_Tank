@@ -2,7 +2,7 @@
  * Timer0_Std_Types.h
  *
  *  Created on: Jan 16, 2022
- *      Author: Queen
+ *      Author: Marina
  */
 
 #ifndef _TIMER0_STD_TYPES_H_

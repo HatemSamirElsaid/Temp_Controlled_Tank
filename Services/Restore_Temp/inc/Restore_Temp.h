@@ -11,7 +11,7 @@
 #include "Std_Types.h"
 //#include "EEPROM_Module.h"
 
-#define default_Temp	60
+#define default_Temp	50
 u8 Des_Temp;
 
 //Functions prototypes

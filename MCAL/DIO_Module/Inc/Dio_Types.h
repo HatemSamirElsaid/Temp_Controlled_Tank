@@ -28,7 +28,7 @@ typedef enum{
 
 typedef enum{
 	INPUT,
-	OTUPUT
+	OUTPUT
 }Pin_Status;
 
 typedef enum{

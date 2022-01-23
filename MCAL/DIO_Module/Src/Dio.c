@@ -117,28 +117,50 @@ Logic_Level DIO_READ_LEVEL(Port_ID port,Pin_ID pin){  //to read pin level if Pin
 void DIO_WRITE_STATUS(Port_ID port,Pin_ID pin,Pin_Status direction){  //to write pin direction
 	switch (port){
 	case DIO_PORTA:
-		if (direction==OTUPUT)
+		if (direction==OUTPUT)
 			SET_BIT(DDRA_REG,pin);
 		else
 			CLR_BIT(DDRA_REG,pin);
 		break;
 	case DIO_PORTB:
-		if (direction==OTUPUT)
+		if (direction==OUTPUT)
 			SET_BIT(DDRB_REG,pin);
 		else
 			CLR_BIT(DDRB_REG,pin);
 		break;
 	case DIO_PORTC:
-		if (direction==OTUPUT)
+		if (direction==OUTPUT)
 			SET_BIT(DDRC_REG,pin);
 		else
 			CLR_BIT(DDRC_REG,pin);
 		break;
 	case DIO_PORTD:
-		if (direction==OTUPUT)
+		if (direction==OUTPUT)
 			SET_BIT(DDRD_REG,pin);
 		else
 			CLR_BIT(DDRD_REG,pin);
+		break;
+	}
+}
+//--------------------------------------------------------------------------------------------------
+void Dio_WriteGroup(Port_ID port,u8 mask,u8 data)
+{
+	switch(port)
+	{
+	case DIO_PORTA:
+		PORTA_REG = (PORTA_REG&~mask)|(data & mask);
+		break;
+
+	case DIO_PORTB:
+		PORTB_REG = (PORTB_REG&~mask)|(data & mask);
+		break;
+
+	case DIO_PORTC:
+		PORTC_REG = (PORTC_REG&~mask)|(data & mask);
+		break;
+
+	case DIO_PORTD:
+		PORTD_REG = (PORTD_REG&~mask)|(data & mask);
 		break;
 	}
 }

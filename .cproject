@@ -51,6 +51,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/HAL/SSD_Module/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/HAL/Heater_Module/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/HAL/Cooler_Module/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/HAL/SSD/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Tests/inc}&quot;"/>
 								</option>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.208584269" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
@@ -177,6 +178,9 @@
 							<tool id="de.innot.avreclipse.tool.avrdude.app.debug.1404784250" name="AVRDude" superClass="de.innot.avreclipse.tool.avrdude.app.debug.1205325271"/>
 						</toolChain>
 					</folderInfo>
+					<sourceEntries>
+						<entry excluding="MCAL/EEPROM" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
@@ -231,6 +235,9 @@
 							<tool id="de.innot.avreclipse.tool.avrdude.app.release.927013250" name="AVRDude" superClass="de.innot.avreclipse.tool.avrdude.app.release"/>
 						</toolChain>
 					</folderInfo>
+					<sourceEntries>
+						<entry excluding="MCAL/EEPROM" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>

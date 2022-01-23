@@ -22,9 +22,7 @@ void DIO_ENABLE_PULLUP(Port_ID,Pin_ID);  //if Pin configured as an input
 void DIO_DISABLE_PULLUP(Port_ID,Pin_ID);  //if Pin configured as an input
 Logic_Level DIO_READ_LEVEL(Port_ID,Pin_ID);  //to read pin level if Pin configured as an input
 
-void DIO_WRITE_Group(Port_ID,u8 mask,u8 data);	//To write data on a group of pins in the same time.
-void DIO_WRITE_Group_STATUS(Port_ID,u8 mask,Pin_Status);  //to write a group of pins direction
-
+void Dio_WriteGroup(Port_ID port,u8 mask,u8 data);	//To write data on a group of pins in the same time.
 
 void DIO_WRITE_STATUS(Port_ID,Pin_ID,Pin_Status);  //to write pin direction
 
