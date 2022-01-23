@@ -28,7 +28,10 @@ HAL/LED_Module/Src \
 HAL/SSD_Module/Src \
 MCAL/DIO_Module/Src \
 MCAL/EXTRN_ISR_Module/Src \
-MCAL/GNRL_ISR_Module/Src \
+MCAL/Global_Inerrupt/Src \
+MCAL/Timer0/Src \
+MCAL/Timer1/Src \
+MCAL/Timer2/Src \
 Services/Debounce_Handler/src \
 Services/Mode_Handler/src \
 Services/Restore_Temp/src \

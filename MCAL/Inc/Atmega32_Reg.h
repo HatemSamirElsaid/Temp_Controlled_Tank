@@ -44,6 +44,10 @@
 //General Interrupt Flag Register Definition
 #define GIFR_REG	(*(volatile u8*)(0x5A))		//contain flags of external interrupt 0,1,2
 
+#define TIMER0_TCCR0_REG  (*(volatile u8*)(0x53))
+#define TIMER0_TCNT0_REG  (*(volatile u8*)(0x52))
+#define TIMER_TIMSK_REG   (*(volatile u8*)(0x59))
+
 //ADC Multiplexer Selection Register
 #define ADMUX_REG	(*(volatile u8*))	//Contain ADC channnel, referance voltage Selection and result left shifting
 

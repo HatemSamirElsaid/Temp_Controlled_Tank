@@ -13,7 +13,10 @@ RM := rm -rf
 -include Services/Restore_Temp/src/subdir.mk
 -include Services/Mode_Handler/src/subdir.mk
 -include Services/Debounce_Handler/src/subdir.mk
--include MCAL/GNRL_ISR_Module/Src/subdir.mk
+-include MCAL/Timer2/Src/subdir.mk
+-include MCAL/Timer1/Src/subdir.mk
+-include MCAL/Timer0/Src/subdir.mk
+-include MCAL/Global_Inerrupt/Src/subdir.mk
 -include MCAL/EXTRN_ISR_Module/Src/subdir.mk
 -include MCAL/DIO_Module/Src/subdir.mk
 -include HAL/SSD_Module/Src/subdir.mk

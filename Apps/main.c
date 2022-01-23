@@ -5,16 +5,16 @@
 #include "Lib.h"
 #include "Main_Types.h"
 #include "Services.h"
-
+//#include "util/delay.h"
 
 
 int main (){
 	/*--------------------------------------------------------------------------------------------------------------*/
 	/*------------------------------------------System Modules Initialization---------------------------------------*/
 	/*--------------------------------------------------------------------------------------------------------------*/
-	//	Timer0_init();
-	//	Timer1_init();
-	//	Timer2_init();
+	Timer0_Init();
+	Timer1_Init();
+	Timer2_Init();
 	Heater_Init();
 	Cooler_Init();
 	//	TempSen_Init();
@@ -33,10 +33,26 @@ int main (){
 	Restore_Temp();
 	Update_Temp_En = TRUE;
 	Blink_Status = FALSE;
+	Timer2_Start(TIMER2_1024_);
+	Timer2_EnableInterrupt();
 	/*--------------------------------------------------------------------------------------------------------------*/
 	/*------------------------------------------System Loop---------------------------------------------------------*/
 	/*--------------------------------------------------------------------------------------------------------------*/
 	while (1){
+
+		/*------------------------------------------Testing---------------------------------------------------------*/
+		/*//Test Timer2 interrupt with Blinking Function
+		if(Blink_Status==TRUE){
+			LED_ON();
+		}else{
+			LED_OFF();
+		}
+		if(Update_Temp_En==TRUE){
+			Update_Temp();
+		}*/
+
+
+
 
 		/*-------------------------------System ON/OFF Control Section----------------------------------------------*/
 
@@ -93,14 +109,16 @@ int main (){
 
 		if((Curr_Temp+5)<Des_Temp){
 			Heater_ON();
-		}else{
-			Heater_OFF();
-		}
-
-		if((Curr_Temp-5)>Des_Temp){
+			if(Blink_Status==TRUE){
+				LED_ON();
+			}else{
+				LED_OFF();
+			}
+		}else if((Curr_Temp-5)>Des_Temp){
 			Cooler_ON();
 		}else{
 			Cooler_OFF();
+			Heater_OFF();
 		}
 	}
 

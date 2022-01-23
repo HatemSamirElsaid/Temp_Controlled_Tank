@@ -10,7 +10,7 @@
 
 #include "Std_Types.h"
 #include <avr/interrupt.h>
-//#include "Timer2_Module.h"
+#include "Timer2.h"
 
 u8 Curr_Temp;
 volatile Boolean Update_Temp_En;

@@ -6,7 +6,6 @@ static u8 Temp_arr[5] = {0,0,0,0,0};
 
 ISR (TIMER2_OVF_vect){
 	Update_Temp_En =TRUE;
-	Blink_Status = !Blink_Status;
 }
 
 static u8 Calc_Average(){
@@ -19,8 +18,9 @@ static u8 Calc_Average(){
 }
 
 void Update_Temp(void){
-	if(Counter==122){
-		//Timer2_Stop();
+	if(Counter==13){
+		Timer2_Stop();
+		Blink_Status = !Blink_Status;
 		u8 Temp = 0/*TempSen_Read()*/;
 		u8 Var1 = Temp_arr[0];
 		for(int i=0;i<4;i++){
@@ -33,10 +33,11 @@ void Update_Temp(void){
 			}
 		}
 		Curr_Temp=Calc_Average();
+		Counter=0;
 	}
 	else{
 		Counter++;
-		//Timer2_Start(1024);
+		Timer2_Start(TIMER2_1024_);
 	}
 	Update_Temp_En =FALSE;
 }
