@@ -1,6 +1,5 @@
 #include "LED.h"
 
-
 void LED_Init(void){
     DIO_WRITE_STATUS(LED1_PORT, LED1_PIN, OTUPUT);
 }

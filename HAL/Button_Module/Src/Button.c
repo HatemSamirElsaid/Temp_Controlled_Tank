@@ -27,7 +27,6 @@ Buttom_Status Button_READ(Button_ID Button){
 				result = DIO_READ_LEVEL(Button2_PORT, Button2_PIN);
 				break;
 		}
-	_delay_ms(100);
 	return result;
 }
 //--------------------------------------------------------------------------------------------------

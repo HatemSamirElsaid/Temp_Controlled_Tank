@@ -8,6 +8,6 @@
 #ifndef MCAL_H_
 #define MCAL_H_
 
-
+#include "Dio.h"
 
 #endif /* MCAL_H_ */

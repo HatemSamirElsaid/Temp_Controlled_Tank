@@ -11,7 +11,6 @@
 #include "Button_Config.h"
 #include "Button_Types.h"
 #include "Dio.h"
-#include <util/delay.h>
 
 //Button Module functions prototypes
 void Button_Init(Button_ID);
