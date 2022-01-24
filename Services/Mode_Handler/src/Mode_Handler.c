@@ -9,6 +9,7 @@ ISR(TIMER1_OVF_vect){
 }
 
 void Mode_Handler(void){
-	Timer1_Start(TIMER1_1024_);
+	Timer1_Stop();
 	Timer1_EnableInterrupt();
+	Timer1_Start(TIMER1_1024_);
 }

@@ -89,11 +89,10 @@ int main (){
 
 		if(Button_READ(BUTTON0)||Button_READ(BUTTON2)){ // Change desired temperature +/-
 			if(ButtonEnable == TRUE){
-
 				Mode_Handler();
 				Mode = Temp_Set;
 
-				if(Button_READ(BUTTON0)){
+				if(Button_READ(BUTTON2)){
 					if(Des_Temp<Max_Temp){
 						Des_Temp +=5;
 					}
@@ -105,6 +104,7 @@ int main (){
 				Store_Temp();
 
 			}
+			Mode_Handler();
 			Debounce_Handler();
 		}
 

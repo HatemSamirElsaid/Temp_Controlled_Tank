@@ -17,7 +17,7 @@
 #define TIMER1_TCCR1B_REG        (*(volatile u8*)(0x4E))
 #define TIMER_TIMSK_REG          (*(volatile u8*)(0x59))
 #define TIMER1_TCNT1H_REG        (*(volatile u8*)(0x4D))
-#define TIMER1_TCNT1L_REG        (*(volatile u8*)(0x4C))
+#define TIMER1_TCNT1L_REG        (*(volatile u16*)(0x4C))
 
 
 #endif /* 01_SOURCE_01_MCAL_TIMER1_INC_TIMER1_REG_H_ */
