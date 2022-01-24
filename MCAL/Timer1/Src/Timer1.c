@@ -21,7 +21,6 @@ void Timer1_Init(void){
 void Timer1_Start(TIMER1_PreScaler_ID prescaler){
 
 	//Reset
-	//TIMER1_TCNT1H_REG |=0x00;
 	TIMER1_TCNT1L_REG = 0;
 
 	switch(prescaler){

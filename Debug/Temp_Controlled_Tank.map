@@ -1,7 +1,9 @@
 Archive member included because of file (symbol)
 
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
-                              ./Services/Update_Temp/src/Update_Temp.o (__udivmodqi4)
+                              ./HAL/SSD/Src/SSD.o (__udivmodqi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                              ./Services/Update_Temp/src/Update_Temp.o (__udivmodhi4)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
@@ -144,7 +146,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x172e
+.text           0x00000000     0x1766
  *(.vectors)
  .vectors       0x00000000       0x54 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -236,6 +238,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .text          0x00000092        0x0 ./HAL/Button_Module/Src/Button.o
  .text          0x00000092        0x0 ./Apps/main.o
  .text          0x00000092        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+ .text          0x00000092        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
  .text          0x00000092        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .text          0x00000092        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
  .text          0x00000092        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
@@ -245,164 +248,166 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00000092       0x2a ./Services/Update_Temp/src/Update_Temp.o
                 0x00000092                __vector_5
  .text.Calc_Average
-                0x000000bc       0x54 ./Services/Update_Temp/src/Update_Temp.o
+                0x000000bc       0x6a ./Services/Update_Temp/src/Update_Temp.o
  .text.Update_Temp
-                0x00000110       0xba ./Services/Update_Temp/src/Update_Temp.o
-                0x00000110                Update_Temp
+                0x00000126       0xc8 ./Services/Update_Temp/src/Update_Temp.o
+                0x00000126                Update_Temp
  .text.Store_Temp
-                0x000001ca        0xe ./Services/Store_Temp/src/Store_Temp.o
-                0x000001ca                Store_Temp
+                0x000001ee        0xe ./Services/Store_Temp/src/Store_Temp.o
+                0x000001ee                Store_Temp
  .text.Restore_Temp
-                0x000001d8       0x34 ./Services/Restore_Temp/src/Restore_Temp.o
-                0x000001d8                Restore_Temp
+                0x000001fc       0x34 ./Services/Restore_Temp/src/Restore_Temp.o
+                0x000001fc                Restore_Temp
  .text.__vector_9
-                0x0000020c       0x5c ./Services/Mode_Handler/src/Mode_Handler.o
-                0x0000020c                __vector_9
+                0x00000230       0x5c ./Services/Mode_Handler/src/Mode_Handler.o
+                0x00000230                __vector_9
  .text.Mode_Handler
-                0x00000268       0x1c ./Services/Mode_Handler/src/Mode_Handler.o
-                0x00000268                Mode_Handler
+                0x0000028c       0x1c ./Services/Mode_Handler/src/Mode_Handler.o
+                0x0000028c                Mode_Handler
  .text.__vector_11
-                0x00000284       0x7c ./Services/Debounce_Handler/src/Debounce_Handler.o
-                0x00000284                __vector_11
+                0x000002a8       0x7c ./Services/Debounce_Handler/src/Debounce_Handler.o
+                0x000002a8                __vector_11
  .text.Debounce_Handler
-                0x00000300       0x1c ./Services/Debounce_Handler/src/Debounce_Handler.o
-                0x00000300                Debounce_Handler
+                0x00000324       0x1c ./Services/Debounce_Handler/src/Debounce_Handler.o
+                0x00000324                Debounce_Handler
  .text.Timer2_Init
-                0x0000031c       0x2a ./MCAL/Timer2/Src/Timer2.o
-                0x0000031c                Timer2_Init
+                0x00000340       0x2a ./MCAL/Timer2/Src/Timer2.o
+                0x00000340                Timer2_Init
  .text.Timer2_Start
-                0x00000346      0x10a ./MCAL/Timer2/Src/Timer2.o
-                0x00000346                Timer2_Start
+                0x0000036a      0x104 ./MCAL/Timer2/Src/Timer2.o
+                0x0000036a                Timer2_Start
  .text.Timer2_Stop
-                0x00000450       0x1a ./MCAL/Timer2/Src/Timer2.o
-                0x00000450                Timer2_Stop
+                0x0000046e       0x1a ./MCAL/Timer2/Src/Timer2.o
+                0x0000046e                Timer2_Stop
  .text.Timer2_EnableInterrupt
-                0x0000046a       0x2a ./MCAL/Timer2/Src/Timer2.o
-                0x0000046a                Timer2_EnableInterrupt
+                0x00000488       0x2a ./MCAL/Timer2/Src/Timer2.o
+                0x00000488                Timer2_EnableInterrupt
  .text.Timer2_DisableInterrupt
-                0x00000494       0x1c ./MCAL/Timer2/Src/Timer2.o
-                0x00000494                Timer2_DisableInterrupt
+                0x000004b2       0x1c ./MCAL/Timer2/Src/Timer2.o
+                0x000004b2                Timer2_DisableInterrupt
  .text.Timer1_Init
-                0x000004b0       0x46 ./MCAL/Timer1/Src/Timer1.o
-                0x000004b0                Timer1_Init
+                0x000004ce       0x46 ./MCAL/Timer1/Src/Timer1.o
+                0x000004ce                Timer1_Init
  .text.Timer1_Start
-                0x000004f6      0x106 ./MCAL/Timer1/Src/Timer1.o
-                0x000004f6                Timer1_Start
+                0x00000514      0x106 ./MCAL/Timer1/Src/Timer1.o
+                0x00000514                Timer1_Start
  .text.Timer1_Stop
-                0x000005fc       0x1a ./MCAL/Timer1/Src/Timer1.o
-                0x000005fc                Timer1_Stop
+                0x0000061a       0x1a ./MCAL/Timer1/Src/Timer1.o
+                0x0000061a                Timer1_Stop
  .text.Timer1_EnableInterrupt
-                0x00000616       0x2a ./MCAL/Timer1/Src/Timer1.o
-                0x00000616                Timer1_EnableInterrupt
+                0x00000634       0x2a ./MCAL/Timer1/Src/Timer1.o
+                0x00000634                Timer1_EnableInterrupt
  .text.Timer1_DisableInterrupt
-                0x00000640       0x1c ./MCAL/Timer1/Src/Timer1.o
-                0x00000640                Timer1_DisableInterrupt
+                0x0000065e       0x1c ./MCAL/Timer1/Src/Timer1.o
+                0x0000065e                Timer1_DisableInterrupt
  .text.Timer0_Init
-                0x0000065c       0x2a ./MCAL/Timer0/Src/Timer0.o
-                0x0000065c                Timer0_Init
+                0x0000067a       0x2a ./MCAL/Timer0/Src/Timer0.o
+                0x0000067a                Timer0_Init
  .text.Timer0_Start
-                0x00000686      0x10a ./MCAL/Timer0/Src/Timer0.o
-                0x00000686                Timer0_Start
+                0x000006a4      0x104 ./MCAL/Timer0/Src/Timer0.o
+                0x000006a4                Timer0_Start
  .text.Timer0_Stop
-                0x00000790       0x1a ./MCAL/Timer0/Src/Timer0.o
-                0x00000790                Timer0_Stop
+                0x000007a8       0x1a ./MCAL/Timer0/Src/Timer0.o
+                0x000007a8                Timer0_Stop
  .text.Timer0_EnableInterrupt
-                0x000007aa       0x2a ./MCAL/Timer0/Src/Timer0.o
-                0x000007aa                Timer0_EnableInterrupt
+                0x000007c2       0x2a ./MCAL/Timer0/Src/Timer0.o
+                0x000007c2                Timer0_EnableInterrupt
  .text.Timer0_DisableInterrupt
-                0x000007d4       0x1c ./MCAL/Timer0/Src/Timer0.o
-                0x000007d4                Timer0_DisableInterrupt
+                0x000007ec       0x1c ./MCAL/Timer0/Src/Timer0.o
+                0x000007ec                Timer0_DisableInterrupt
  .text.Enable_Gl_Int
-                0x000007f0       0x1c ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
-                0x000007f0                Enable_Gl_Int
+                0x00000808       0x1c ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
+                0x00000808                Enable_Gl_Int
  .text.Disable_Gl_Int
-                0x0000080c       0x1c ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
-                0x0000080c                Disable_Gl_Int
+                0x00000824       0x1c ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
+                0x00000824                Disable_Gl_Int
  .text.DIO_SET_PIN
-                0x00000828       0xfa ./MCAL/DIO_Module/Src/Dio.o
-                0x00000828                DIO_SET_PIN
+                0x00000840       0xfa ./MCAL/DIO_Module/Src/Dio.o
+                0x00000840                DIO_SET_PIN
  .text.DIO_CLEAR_PIN
-                0x00000922      0x104 ./MCAL/DIO_Module/Src/Dio.o
-                0x00000922                DIO_CLEAR_PIN
+                0x0000093a      0x104 ./MCAL/DIO_Module/Src/Dio.o
+                0x0000093a                DIO_CLEAR_PIN
  .text.DIO_TOGGLE_PIN
-                0x00000a26       0xfa ./MCAL/DIO_Module/Src/Dio.o
-                0x00000a26                DIO_TOGGLE_PIN
+                0x00000a3e       0xfa ./MCAL/DIO_Module/Src/Dio.o
+                0x00000a3e                DIO_TOGGLE_PIN
  .text.DIO_ENABLE_PULLUP
-                0x00000b20      0x19e ./MCAL/DIO_Module/Src/Dio.o
-                0x00000b20                DIO_ENABLE_PULLUP
+                0x00000b38      0x19e ./MCAL/DIO_Module/Src/Dio.o
+                0x00000b38                DIO_ENABLE_PULLUP
  .text.DIO_DISABLE_PULLUP
-                0x00000cbe      0x1a6 ./MCAL/DIO_Module/Src/Dio.o
-                0x00000cbe                DIO_DISABLE_PULLUP
+                0x00000cd6      0x1a6 ./MCAL/DIO_Module/Src/Dio.o
+                0x00000cd6                DIO_DISABLE_PULLUP
  .text.DIO_READ_LEVEL
-                0x00000e64       0xfe ./MCAL/DIO_Module/Src/Dio.o
-                0x00000e64                DIO_READ_LEVEL
+                0x00000e7c       0xfe ./MCAL/DIO_Module/Src/Dio.o
+                0x00000e7c                DIO_READ_LEVEL
  .text.DIO_WRITE_STATUS
-                0x00000f62      0x1c6 ./MCAL/DIO_Module/Src/Dio.o
-                0x00000f62                DIO_WRITE_STATUS
+                0x00000f7a      0x1c6 ./MCAL/DIO_Module/Src/Dio.o
+                0x00000f7a                DIO_WRITE_STATUS
  .text.Dio_WriteGroup
-                0x00001128       0xe0 ./MCAL/DIO_Module/Src/Dio.o
-                0x00001128                Dio_WriteGroup
+                0x00001140       0xe0 ./MCAL/DIO_Module/Src/Dio.o
+                0x00001140                Dio_WriteGroup
  .text.SSD_Init
-                0x00001208       0x4a ./HAL/SSD/Src/SSD.o
-                0x00001208                SSD_Init
+                0x00001220       0x4a ./HAL/SSD/Src/SSD.o
+                0x00001220                SSD_Init
  .text.SSD_DisplayNumber
-                0x00001252       0x90 ./HAL/SSD/Src/SSD.o
-                0x00001252                SSD_DisplayNumber
+                0x0000126a       0x90 ./HAL/SSD/Src/SSD.o
+                0x0000126a                SSD_DisplayNumber
  .text.SSD_Stop
-                0x000012e2       0x1e ./HAL/SSD/Src/SSD.o
-                0x000012e2                SSD_Stop
+                0x000012fa       0x1e ./HAL/SSD/Src/SSD.o
+                0x000012fa                SSD_Stop
  .text.LED_Init
-                0x00001300       0x18 ./HAL/LED_Module/Src/LED.o
-                0x00001300                LED_Init
- .text.LED_ON   0x00001318       0x16 ./HAL/LED_Module/Src/LED.o
-                0x00001318                LED_ON
- .text.LED_OFF  0x0000132e       0x16 ./HAL/LED_Module/Src/LED.o
-                0x0000132e                LED_OFF
+                0x00001318       0x18 ./HAL/LED_Module/Src/LED.o
+                0x00001318                LED_Init
+ .text.LED_ON   0x00001330       0x16 ./HAL/LED_Module/Src/LED.o
+                0x00001330                LED_ON
+ .text.LED_OFF  0x00001346       0x16 ./HAL/LED_Module/Src/LED.o
+                0x00001346                LED_OFF
  .text.LED_TOGGLE
-                0x00001344       0x16 ./HAL/LED_Module/Src/LED.o
-                0x00001344                LED_TOGGLE
+                0x0000135c       0x16 ./HAL/LED_Module/Src/LED.o
+                0x0000135c                LED_TOGGLE
  .text.Heater_Init
-                0x0000135a       0x18 ./HAL/Heater_Module/src/Heater.o
-                0x0000135a                Heater_Init
+                0x00001372       0x18 ./HAL/Heater_Module/src/Heater.o
+                0x00001372                Heater_Init
  .text.Heater_ON
-                0x00001372       0x16 ./HAL/Heater_Module/src/Heater.o
-                0x00001372                Heater_ON
+                0x0000138a       0x16 ./HAL/Heater_Module/src/Heater.o
+                0x0000138a                Heater_ON
  .text.Heater_OFF
-                0x00001388       0x1a ./HAL/Heater_Module/src/Heater.o
-                0x00001388                Heater_OFF
+                0x000013a0       0x1a ./HAL/Heater_Module/src/Heater.o
+                0x000013a0                Heater_OFF
  .text.Cooler_Init
-                0x000013a2       0x18 ./HAL/Cooler_Module/src/Cooler.o
-                0x000013a2                Cooler_Init
+                0x000013ba       0x18 ./HAL/Cooler_Module/src/Cooler.o
+                0x000013ba                Cooler_Init
  .text.Cooler_ON
-                0x000013ba       0x1a ./HAL/Cooler_Module/src/Cooler.o
-                0x000013ba                Cooler_ON
+                0x000013d2       0x1a ./HAL/Cooler_Module/src/Cooler.o
+                0x000013d2                Cooler_ON
  .text.Cooler_OFF
-                0x000013d4       0x1a ./HAL/Cooler_Module/src/Cooler.o
-                0x000013d4                Cooler_OFF
+                0x000013ec       0x1a ./HAL/Cooler_Module/src/Cooler.o
+                0x000013ec                Cooler_OFF
  .text.Button_Init
-                0x000013ee       0x62 ./HAL/Button_Module/Src/Button.o
-                0x000013ee                Button_Init
+                0x00001406       0x62 ./HAL/Button_Module/Src/Button.o
+                0x00001406                Button_Init
  .text.Button_READ
-                0x00001450       0x66 ./HAL/Button_Module/Src/Button.o
-                0x00001450                Button_READ
+                0x00001468       0x66 ./HAL/Button_Module/Src/Button.o
+                0x00001468                Button_READ
  .text.Button_Pullup_Enable
-                0x000014b6       0x5c ./HAL/Button_Module/Src/Button.o
-                0x000014b6                Button_Pullup_Enable
+                0x000014ce       0x5c ./HAL/Button_Module/Src/Button.o
+                0x000014ce                Button_Pullup_Enable
  .text.Button_Pullup_Disable
-                0x00001512       0x5c ./HAL/Button_Module/Src/Button.o
-                0x00001512                Button_Pullup_Disable
- .text.main     0x0000156e      0x1a4 ./Apps/main.o
-                0x0000156e                main
- .text.libgcc   0x00001712       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
-                0x00001712                __udivmodqi4
- .text.libgcc   0x0000172a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x0000172a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x0000172a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x0000172a                . = ALIGN (0x2)
+                0x0000152a       0x5c ./HAL/Button_Module/Src/Button.o
+                0x0000152a                Button_Pullup_Disable
+ .text.main     0x00001586      0x19c ./Apps/main.o
+                0x00001586                main
+ .text.libgcc   0x00001722       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                0x00001722                __udivmodqi4
+ .text.libgcc   0x0000173a       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x0000173a                __udivmodhi4
+ .text.libgcc   0x00001762        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001762        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00001762        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00001762                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000172a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x0000172a                exit
-                0x0000172a                _exit
+ .fini9         0x00001762        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001762                exit
+                0x00001762                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -421,11 +426,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000172a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001762        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000172e                _etext = .
+                0x00001766                _etext = .
 
-.data           0x00800060        0x2 load address 0x0000172e
+.data           0x00800060        0x2 load address 0x00001766
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -447,6 +452,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .data          0x00800060        0x0 ./HAL/Button_Module/Src/Button.o
  .data          0x00800060        0x0 ./Apps/main.o
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
@@ -482,6 +488,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .bss           0x00800062        0x0 ./HAL/Button_Module/Src/Button.o
  .bss           0x00800062        0x0 ./Apps/main.o
  .bss           0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+ .bss           0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
  .bss           0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .bss           0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
  .bss           0x00800062        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
@@ -502,8 +509,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  COMMON         0x0080006f        0x1 ./Services/Debounce_Handler/src/Debounce_Handler.o
                 0x0080006f                ButtonEnable
                 0x00800070                PROVIDE (__bss_end, .)
-                0x0000172e                __data_load_start = LOADADDR (.data)
-                0x00001730                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001766                __data_load_start = LOADADDR (.data)
+                0x00001768                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800070        0x0
                 0x00800070                PROVIDE (__noinit_start, .)
@@ -528,45 +535,45 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x2e68
+.stab           0x00000000     0x2e80
  *(.stab)
- .stab          0x00000000      0x630 ./Services/Update_Temp/src/Update_Temp.o
- .stab          0x00000630      0x120 ./Services/Store_Temp/src/Store_Temp.o
+ .stab          0x00000000      0x660 ./Services/Update_Temp/src/Update_Temp.o
+ .stab          0x00000660      0x120 ./Services/Store_Temp/src/Store_Temp.o
                                 0x1b0 (size before relaxing)
- .stab          0x00000750      0x1a4 ./Services/Restore_Temp/src/Restore_Temp.o
+ .stab          0x00000780      0x1a4 ./Services/Restore_Temp/src/Restore_Temp.o
                                 0x234 (size before relaxing)
- .stab          0x000008f4      0x258 ./Services/Mode_Handler/src/Mode_Handler.o
+ .stab          0x00000924      0x258 ./Services/Mode_Handler/src/Mode_Handler.o
                                 0x4a4 (size before relaxing)
- .stab          0x00000b4c      0x264 ./Services/Debounce_Handler/src/Debounce_Handler.o
+ .stab          0x00000b7c      0x264 ./Services/Debounce_Handler/src/Debounce_Handler.o
                                 0x4b0 (size before relaxing)
- .stab          0x00000db0      0x294 ./MCAL/Timer2/Src/Timer2.o
+ .stab          0x00000de0      0x294 ./MCAL/Timer2/Src/Timer2.o
                                 0x354 (size before relaxing)
- .stab          0x00001044      0x2ac ./MCAL/Timer1/Src/Timer1.o
+ .stab          0x00001074      0x2ac ./MCAL/Timer1/Src/Timer1.o
                                 0x36c (size before relaxing)
- .stab          0x000012f0      0x294 ./MCAL/Timer0/Src/Timer0.o
+ .stab          0x00001320      0x294 ./MCAL/Timer0/Src/Timer0.o
                                 0x354 (size before relaxing)
- .stab          0x00001584      0x174 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
+ .stab          0x000015b4      0x174 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
                                 0x204 (size before relaxing)
- .stab          0x000016f8       0xd8 ./MCAL/EXTRN_ISR_Module/Src/EXTRN_ISR.o
+ .stab          0x00001728       0xd8 ./MCAL/EXTRN_ISR_Module/Src/EXTRN_ISR.o
                                  0xe4 (size before relaxing)
- .stab          0x000017d0      0x618 ./MCAL/DIO_Module/Src/Dio.o
+ .stab          0x00001800      0x618 ./MCAL/DIO_Module/Src/Dio.o
                                 0x6a8 (size before relaxing)
- .stab          0x00001de8      0x2b8 ./HAL/SSD/Src/SSD.o
+ .stab          0x00001e18      0x2b8 ./HAL/SSD/Src/SSD.o
                                 0x3c0 (size before relaxing)
- .stab          0x000020a0      0x1d4 ./HAL/LED_Module/Src/LED.o
+ .stab          0x000020d0      0x1d4 ./HAL/LED_Module/Src/LED.o
                                 0x2dc (size before relaxing)
- .stab          0x00002274      0x1b0 ./HAL/Heater_Module/src/Heater.o
+ .stab          0x000022a4      0x1b0 ./HAL/Heater_Module/src/Heater.o
                                 0x2b8 (size before relaxing)
- .stab          0x00002424      0x1bc ./HAL/Cooler_Module/src/Cooler.o
+ .stab          0x00002454      0x1bc ./HAL/Cooler_Module/src/Cooler.o
                                 0x2c4 (size before relaxing)
- .stab          0x000025e0      0x30c ./HAL/Button_Module/Src/Button.o
+ .stab          0x00002610      0x30c ./HAL/Button_Module/Src/Button.o
                                 0x414 (size before relaxing)
- .stab          0x000028ec      0x57c ./Apps/main.o
-                                0x954 (size before relaxing)
+ .stab          0x0000291c      0x564 ./Apps/main.o
+                                0x93c (size before relaxing)
 
-.stabstr        0x00000000     0x1b91
+.stabstr        0x00000000     0x1b9c
  *(.stabstr)
- .stabstr       0x00000000     0x1b91 ./Services/Update_Temp/src/Update_Temp.o
+ .stabstr       0x00000000     0x1b9c ./Services/Update_Temp/src/Update_Temp.o
 
 .stab.excl
  *(.stab.excl)

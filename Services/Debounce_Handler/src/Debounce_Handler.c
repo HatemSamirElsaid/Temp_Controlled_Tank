@@ -3,7 +3,7 @@
 static u8 Counter = 0;
 
 ISR(TIMER0_OVF_vect){
-	if(Counter==13){
+	if(Counter==5){
 		ButtonEnable = TRUE;
 		Timer0_Stop();
 		Timer0_DisableInterrupt();

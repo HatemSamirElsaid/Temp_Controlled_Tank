@@ -114,10 +114,9 @@ int main (){
 			SSD_DisplayNumber(Curr_Temp);
 		}else if(Mode==Temp_Set && Blink_Status==TRUE){
 			SSD_DisplayNumber(Des_Temp);
-			LED_ON();
+
 		}else{
 			SSD_Stop();
-			LED_OFF();
 		}
 
 		/*-------------------------------Heating/Cooling elements Control Section-------------------------------------*/
@@ -132,8 +131,9 @@ int main (){
 		}else if((Curr_Temp-5)>Des_Temp){
 			Cooler_ON();
 		}else{
-			Cooler_OFF();
 			Heater_OFF();
+			Cooler_OFF();
+
 		}
 
 	}

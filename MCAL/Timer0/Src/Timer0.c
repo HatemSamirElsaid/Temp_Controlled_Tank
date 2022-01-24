@@ -19,7 +19,7 @@ void Timer0_Init(void){
 
 void Timer0_Start(TIMER0_PreScaler_ID prescaler){
 
-	TIMER0_TCNT0_REG |=0x00;  //Reset
+	TIMER0_TCNT0_REG =0;  //Reset
 
 	switch(prescaler){
 
