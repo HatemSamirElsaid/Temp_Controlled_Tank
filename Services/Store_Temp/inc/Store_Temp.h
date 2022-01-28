@@ -1,15 +1,17 @@
-/*
- * Store_Temp.h
- *
- *  Created on: Jan 19, 2022
- *      Author: htmsa
- */
+//---------------------------------------------------------------------//
+//Created:		Jan 19, 2022
+//Author: 		HatemSamirElsaid
+//Type:			Service
+//Dependences:	EEPROM_Module
+//Description:
+//---------------------------------------------------------------------//
 
 #ifndef SERVICES_STORE_TEMP_INC_STORE_TEMP_H_
 #define SERVICES_STORE_TEMP_INC_STORE_TEMP_H_
 
 #include "Std_Types.h"
-//#include "EEPROM_Module.h"
+#include "Eeprom.h"
+#include "Restore_Temp.h"
 
 //Functions prototypes
 void Store_Temp(void);

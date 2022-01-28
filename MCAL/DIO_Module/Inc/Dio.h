@@ -13,7 +13,7 @@
 #include "Atmega32_Reg.h"
 #include "Std_Operations.h"
 
-//DIO Module functions prototypes.
+//DIO Module function prototypes.
 void DIO_SET_PIN(Port_ID,Pin_ID);	//if Pin configured as an output
 void DIO_CLEAR_PIN(Port_ID,Pin_ID);		//if Pin configured as an output
 void DIO_TOGGLE_PIN(Port_ID,Pin_ID);	//if Pin configured as an output

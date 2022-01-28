@@ -1,20 +1,16 @@
- /********************************************************************************************************************
- *  File		: Eeprom.h
- *	Module		: EEPROM
- *	Target		: ATMEGA32
- *	Author		: mFawzi
- *  Description	:
- *********************************************************************************************************************/
-#ifndef EEPROM_H
-#define EEPROM_H
+ /*
+ * MCAL_EEPROM.h
+ *
+ *  Created on: Jan 2, 2021
+ *      Author: HatemSamir
+ */
+#ifndef MCAL_EEPROM_H
+#define MCAL_EEPROM_H
 
 #include <Eeprom_Reg.h>
 #include "Std_Types.h"
 
+//function prototypes.
 void EEPROM_Write(u16 address,u8 data);
 u8 EEPROM_Read(u16 address);
-#endif  /* EEPROM_H */
-
-/**********************************************************************************************************************
- *  END OF FILE: Eeprom.h
- *********************************************************************************************************************/
+#endif

@@ -1,12 +1,11 @@
- /********************************************************************************************************************
- *  File		: Eeprom_Private.h
- *	Module		: EEPROM
- *	Target		: ATMEGA32
- *	Author		: mFawzi
- *  Description	:
- *********************************************************************************************************************/
-#ifndef EEPROM_PRIVATE_H
-#define EEPROM_PRIVATE_H
+ /*
+ * MCAL_EEPROM_PRIVATE.h
+ *
+ *  Created on: Jan 2, 2021
+ *      Author: HatemSamir
+ */
+#ifndef MCAL_EEPROM_PRIVATE_H
+#define MCAL_EEPROM_PRIVATE_H
 
 #define EEPROM_ARH_REG				(*(volatile u8*)0x3F)
 #define EEPROM_ARL_REG				(*(volatile u8*)0x3E)
@@ -17,8 +16,4 @@
 #define EEMWE				(2u)
 
 
-#endif  /* EEPROM_PRIVATE_H */
-
-/**********************************************************************************************************************
- *  END OF FILE: Eeprom_Private.h
- *********************************************************************************************************************/
+#endif

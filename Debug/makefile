@@ -18,6 +18,7 @@ RM := rm -rf
 -include MCAL/Timer0/Src/subdir.mk
 -include MCAL/Global_Inerrupt/Src/subdir.mk
 -include MCAL/EXTRN_ISR_Module/Src/subdir.mk
+-include MCAL/EEPROM/Src/subdir.mk
 -include MCAL/DIO_Module/Src/subdir.mk
 -include HAL/SSD/Src/subdir.mk
 -include HAL/LED_Module/Src/subdir.mk

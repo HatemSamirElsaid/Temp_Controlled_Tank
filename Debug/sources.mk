@@ -27,6 +27,7 @@ HAL/Heater_Module/src \
 HAL/LED_Module/Src \
 HAL/SSD/Src \
 MCAL/DIO_Module/Src \
+MCAL/EEPROM/Src \
 MCAL/EXTRN_ISR_Module/Src \
 MCAL/Global_Inerrupt/Src \
 MCAL/Timer0/Src \

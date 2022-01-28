@@ -15,7 +15,7 @@ void Button_Init(Button_ID Button){
 }
 //--------------------------------------------------------------------------------------------------
 Buttom_Status Button_READ(Button_ID Button){
-	Buttom_Status result;
+	Buttom_Status result = 0;
 	switch(Button){
 		case(BUTTON0):
 				result = DIO_READ_LEVEL(Button0_PORT, Button0_PIN);
