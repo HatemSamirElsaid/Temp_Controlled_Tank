@@ -1,9 +1,8 @@
-/*
- * Heater.h
- *
- *  Created on: Jan 19, 2022
- *      Author: htmsa
- */
+//---------------------------------------------------------------------//
+//Created:		Jan 19, 2022
+//Author: 		HatemSamirElsaid
+//Type:			Module
+//---------------------------------------------------------------------//
 
 #ifndef HAL_HEATER_MODULE_INC_HEATER_H_
 #define HAL_HEATER_MODULE_INC_HEATER_H_

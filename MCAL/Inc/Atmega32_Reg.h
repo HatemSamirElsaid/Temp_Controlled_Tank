@@ -1,9 +1,7 @@
-/*
- * Atmel32_Reg.h
- *
- *  Created on: Dec 4, 2021
- *      Author: HatemSamir
- */
+//---------------------------------------------------------------------//
+//Created:		Nov 19, 2022
+//Author: 		HatemSamirElsaid
+//---------------------------------------------------------------------//
 
 #ifndef MCAL_ATMEL32_REG_H_
 #define MCAL_ATMEL32_REG_H_

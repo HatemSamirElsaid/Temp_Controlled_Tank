@@ -1,3 +1,9 @@
+//---------------------------------------------------------------------//
+//Created:		Nov 19, 2022
+//Author: 		HatemSamirElsaid
+//Type:			Module
+//---------------------------------------------------------------------//
+
 #include "Dio.h"
 
 void DIO_SET_PIN(Port_ID port,Pin_ID pin){  //if Pin configured as an output

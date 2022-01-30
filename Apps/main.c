@@ -1,11 +1,8 @@
-//#include <avr/io.h>
-
 #include "MCAL.h"
 #include "HAL.h"
 #include "Lib.h"
 #include "Main_Types.h"
 #include "Services.h"
-
 
 int main (){
 	/*--------------------------------------------------------------------------------------------------------------*/
@@ -16,7 +13,6 @@ int main (){
 	Timer2_Init();
 	Heater_Init();
 	Cooler_Init();
-	//	TempSen_Init();
 	SSD_Init();
 	Button_Init(BUTTON0);
 	Button_Init(BUTTON1);
@@ -34,6 +30,8 @@ int main (){
 	Blink_Status = FALSE;
 	Timer2_Start(TIMER2_1024_);
 	Timer2_EnableInterrupt();
+	Enable_Gl_Int();
+	UART_Init(UART_BAUDRATE_9600);
 	/*--------------------------------------------------------------------------------------------------------------*/
 	/*------------------------------------------System Loop---------------------------------------------------------*/
 	/*--------------------------------------------------------------------------------------------------------------*/

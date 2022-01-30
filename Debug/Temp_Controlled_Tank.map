@@ -12,11 +12,14 @@ c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
 Allocating common symbols
 Common symbol       size              file
 
+Num                 0x1               ./MCAL/UART/Src/Uart.o
 Blink_Status        0x1               ./Services/Update_Temp/src/Update_Temp.o
 Des_Temp            0x1               ./Services/Store_Temp/src/Store_Temp.o
 Curr_Temp           0x1               ./Services/Update_Temp/src/Update_Temp.o
 ButtonEnable        0x1               ./Services/Debounce_Handler/src/Debounce_Handler.o
 Mode                0x1               ./Services/Mode_Handler/src/Mode_Handler.o
+UART_RxBuffer       0x14              ./MCAL/UART/Src/Uart.o
+UART_TxBuffer       0x14              ./MCAL/UART/Src/Uart.o
 Update_Temp_En      0x1               ./Services/Update_Temp/src/Update_Temp.o
 
 Memory Configuration
@@ -38,11 +41,11 @@ LOAD ./Services/Store_Temp/src/Store_Temp.o
 LOAD ./Services/Restore_Temp/src/Restore_Temp.o
 LOAD ./Services/Mode_Handler/src/Mode_Handler.o
 LOAD ./Services/Debounce_Handler/src/Debounce_Handler.o
+LOAD ./MCAL/UART/Src/Uart.o
 LOAD ./MCAL/Timer2/Src/Timer2.o
 LOAD ./MCAL/Timer1/Src/Timer1.o
 LOAD ./MCAL/Timer0/Src/Timer0.o
 LOAD ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
-LOAD ./MCAL/EXTRN_ISR_Module/Src/EXTRN_ISR.o
 LOAD ./MCAL/EEPROM/Src/Eeprom.o
 LOAD ./MCAL/DIO_Module/Src/Dio.o
 LOAD ./HAL/SSD/Src/SSD.o
@@ -145,7 +148,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xc64
+.text           0x00000000      0xcec
  *(.vectors)
  .vectors       0x00000000       0x54 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -204,15 +207,12 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00000078                __bad_interrupt
                 0x00000078                __vector_6
                 0x00000078                __vector_3
-                0x00000078                __vector_13
                 0x00000078                __vector_17
                 0x00000078                __vector_19
                 0x00000078                __vector_7
                 0x00000078                __vector_4
                 0x00000078                __vector_2
-                0x00000078                __vector_15
                 0x00000078                __vector_8
-                0x00000078                __vector_14
                 0x00000078                __vector_10
                 0x00000078                __vector_16
                 0x00000078                __vector_18
@@ -222,11 +222,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .text          0x0000007c        0x0 ./Services/Restore_Temp/src/Restore_Temp.o
  .text          0x0000007c        0x0 ./Services/Mode_Handler/src/Mode_Handler.o
  .text          0x0000007c        0x0 ./Services/Debounce_Handler/src/Debounce_Handler.o
+ .text          0x0000007c        0x0 ./MCAL/UART/Src/Uart.o
  .text          0x0000007c        0x0 ./MCAL/Timer2/Src/Timer2.o
  .text          0x0000007c        0x0 ./MCAL/Timer1/Src/Timer1.o
  .text          0x0000007c        0x0 ./MCAL/Timer0/Src/Timer0.o
  .text          0x0000007c        0x0 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
- .text          0x0000007c        0x0 ./MCAL/EXTRN_ISR_Module/Src/EXTRN_ISR.o
  .text          0x0000007c        0x0 ./MCAL/EEPROM/Src/Eeprom.o
  .text          0x0000007c        0x0 ./MCAL/DIO_Module/Src/Dio.o
  .text          0x0000007c        0x0 ./HAL/SSD/Src/SSD.o
@@ -245,169 +245,190 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x0000007c       0x1e ./Services/Update_Temp/src/Update_Temp.o
                 0x0000007c                __vector_5
  .text.Update_Temp
-                0x0000009a       0xa8 ./Services/Update_Temp/src/Update_Temp.o
+                0x0000009a       0xa4 ./Services/Update_Temp/src/Update_Temp.o
                 0x0000009a                Update_Temp
  .text.Store_Temp
-                0x00000142        0xe ./Services/Store_Temp/src/Store_Temp.o
-                0x00000142                Store_Temp
+                0x0000013e        0xe ./Services/Store_Temp/src/Store_Temp.o
+                0x0000013e                Store_Temp
  .text.Restore_Temp
-                0x00000150       0x36 ./Services/Restore_Temp/src/Restore_Temp.o
-                0x00000150                Restore_Temp
+                0x0000014c       0x36 ./Services/Restore_Temp/src/Restore_Temp.o
+                0x0000014c                Restore_Temp
  .text.Mode_Handler
-                0x00000186       0x10 ./Services/Mode_Handler/src/Mode_Handler.o
-                0x00000186                Mode_Handler
+                0x00000182       0x10 ./Services/Mode_Handler/src/Mode_Handler.o
+                0x00000182                Mode_Handler
  .text.__vector_9
-                0x00000196       0x50 ./Services/Mode_Handler/src/Mode_Handler.o
-                0x00000196                __vector_9
+                0x00000192       0x50 ./Services/Mode_Handler/src/Mode_Handler.o
+                0x00000192                __vector_9
  .text.Debounce_Handler
-                0x000001e6       0x10 ./Services/Debounce_Handler/src/Debounce_Handler.o
-                0x000001e6                Debounce_Handler
+                0x000001e2       0x10 ./Services/Debounce_Handler/src/Debounce_Handler.o
+                0x000001e2                Debounce_Handler
  .text.__vector_11
-                0x000001f6       0x6c ./Services/Debounce_Handler/src/Debounce_Handler.o
-                0x000001f6                __vector_11
+                0x000001f2       0x6c ./Services/Debounce_Handler/src/Debounce_Handler.o
+                0x000001f2                __vector_11
+ .text.UART_Init
+                0x0000025e       0x12 ./MCAL/UART/Src/Uart.o
+                0x0000025e                UART_Init
+ .text.UART_TransmitChr
+                0x00000270        0x8 ./MCAL/UART/Src/Uart.o
+                0x00000270                UART_TransmitChr
+ .text.UART_TransmitStr
+                0x00000278       0x18 ./MCAL/UART/Src/Uart.o
+                0x00000278                UART_TransmitStr
+ .text.UART_ReceiveChr
+                0x00000290        0x8 ./MCAL/UART/Src/Uart.o
+                0x00000290                UART_ReceiveChr
+ .text.__vector_13
+                0x00000298       0x1e ./MCAL/UART/Src/Uart.o
+                0x00000298                __vector_13
+ .text.__vector_14
+                0x000002b6       0x14 ./MCAL/UART/Src/Uart.o
+                0x000002b6                __vector_14
+ .text.__vector_15
+                0x000002ca       0x14 ./MCAL/UART/Src/Uart.o
+                0x000002ca                __vector_15
  .text.Timer2_Init
-                0x00000262        0xe ./MCAL/Timer2/Src/Timer2.o
-                0x00000262                Timer2_Init
+                0x000002de        0xe ./MCAL/Timer2/Src/Timer2.o
+                0x000002de                Timer2_Init
  .text.Timer2_Start
-                0x00000270       0x62 ./MCAL/Timer2/Src/Timer2.o
-                0x00000270                Timer2_Start
+                0x000002ec       0x62 ./MCAL/Timer2/Src/Timer2.o
+                0x000002ec                Timer2_Start
  .text.Timer2_Stop
-                0x000002d2        0x6 ./MCAL/Timer2/Src/Timer2.o
-                0x000002d2                Timer2_Stop
+                0x0000034e        0x6 ./MCAL/Timer2/Src/Timer2.o
+                0x0000034e                Timer2_Stop
  .text.Timer2_EnableInterrupt
-                0x000002d8        0xe ./MCAL/Timer2/Src/Timer2.o
-                0x000002d8                Timer2_EnableInterrupt
+                0x00000354        0xe ./MCAL/Timer2/Src/Timer2.o
+                0x00000354                Timer2_EnableInterrupt
  .text.Timer2_DisableInterrupt
-                0x000002e6        0x8 ./MCAL/Timer2/Src/Timer2.o
-                0x000002e6                Timer2_DisableInterrupt
+                0x00000362        0x8 ./MCAL/Timer2/Src/Timer2.o
+                0x00000362                Timer2_DisableInterrupt
  .text.Timer1_Init
-                0x000002ee       0x1a ./MCAL/Timer1/Src/Timer1.o
-                0x000002ee                Timer1_Init
+                0x0000036a       0x1a ./MCAL/Timer1/Src/Timer1.o
+                0x0000036a                Timer1_Init
  .text.Timer1_Start
-                0x00000308       0x64 ./MCAL/Timer1/Src/Timer1.o
-                0x00000308                Timer1_Start
+                0x00000384       0x64 ./MCAL/Timer1/Src/Timer1.o
+                0x00000384                Timer1_Start
  .text.Timer1_Stop
-                0x0000036c        0x6 ./MCAL/Timer1/Src/Timer1.o
-                0x0000036c                Timer1_Stop
+                0x000003e8        0x6 ./MCAL/Timer1/Src/Timer1.o
+                0x000003e8                Timer1_Stop
  .text.Timer1_EnableInterrupt
-                0x00000372        0xe ./MCAL/Timer1/Src/Timer1.o
-                0x00000372                Timer1_EnableInterrupt
+                0x000003ee        0xe ./MCAL/Timer1/Src/Timer1.o
+                0x000003ee                Timer1_EnableInterrupt
  .text.Timer1_DisableInterrupt
-                0x00000380        0x8 ./MCAL/Timer1/Src/Timer1.o
-                0x00000380                Timer1_DisableInterrupt
+                0x000003fc        0x8 ./MCAL/Timer1/Src/Timer1.o
+                0x000003fc                Timer1_DisableInterrupt
  .text.Timer0_Init
-                0x00000388        0xe ./MCAL/Timer0/Src/Timer0.o
-                0x00000388                Timer0_Init
+                0x00000404        0xe ./MCAL/Timer0/Src/Timer0.o
+                0x00000404                Timer0_Init
  .text.Timer0_Start
-                0x00000396       0x62 ./MCAL/Timer0/Src/Timer0.o
-                0x00000396                Timer0_Start
+                0x00000412       0x62 ./MCAL/Timer0/Src/Timer0.o
+                0x00000412                Timer0_Start
  .text.Timer0_Stop
-                0x000003f8        0x6 ./MCAL/Timer0/Src/Timer0.o
-                0x000003f8                Timer0_Stop
+                0x00000474        0x6 ./MCAL/Timer0/Src/Timer0.o
+                0x00000474                Timer0_Stop
  .text.Timer0_EnableInterrupt
-                0x000003fe        0xe ./MCAL/Timer0/Src/Timer0.o
-                0x000003fe                Timer0_EnableInterrupt
+                0x0000047a        0xe ./MCAL/Timer0/Src/Timer0.o
+                0x0000047a                Timer0_EnableInterrupt
  .text.Timer0_DisableInterrupt
-                0x0000040c        0x8 ./MCAL/Timer0/Src/Timer0.o
-                0x0000040c                Timer0_DisableInterrupt
+                0x00000488        0x8 ./MCAL/Timer0/Src/Timer0.o
+                0x00000488                Timer0_DisableInterrupt
  .text.Enable_Gl_Int
-                0x00000414        0x8 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
-                0x00000414                Enable_Gl_Int
+                0x00000490        0x8 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
+                0x00000490                Enable_Gl_Int
  .text.Disable_Gl_Int
-                0x0000041c        0x8 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
-                0x0000041c                Disable_Gl_Int
+                0x00000498        0x8 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
+                0x00000498                Disable_Gl_Int
  .text.EEPROM_Write
-                0x00000424       0x10 ./MCAL/EEPROM/Src/Eeprom.o
-                0x00000424                EEPROM_Write
+                0x000004a0       0x10 ./MCAL/EEPROM/Src/Eeprom.o
+                0x000004a0                EEPROM_Write
  .text.EEPROM_Read
-                0x00000434        0xe ./MCAL/EEPROM/Src/Eeprom.o
-                0x00000434                EEPROM_Read
+                0x000004b0        0xe ./MCAL/EEPROM/Src/Eeprom.o
+                0x000004b0                EEPROM_Read
  .text.DIO_SET_PIN
-                0x00000442       0x6a ./MCAL/DIO_Module/Src/Dio.o
-                0x00000442                DIO_SET_PIN
+                0x000004be       0x6a ./MCAL/DIO_Module/Src/Dio.o
+                0x000004be                DIO_SET_PIN
  .text.DIO_CLEAR_PIN
-                0x000004ac       0x72 ./MCAL/DIO_Module/Src/Dio.o
-                0x000004ac                DIO_CLEAR_PIN
+                0x00000528       0x72 ./MCAL/DIO_Module/Src/Dio.o
+                0x00000528                DIO_CLEAR_PIN
  .text.DIO_TOGGLE_PIN
-                0x0000051e       0x6a ./MCAL/DIO_Module/Src/Dio.o
-                0x0000051e                DIO_TOGGLE_PIN
+                0x0000059a       0x6a ./MCAL/DIO_Module/Src/Dio.o
+                0x0000059a                DIO_TOGGLE_PIN
  .text.DIO_ENABLE_PULLUP
-                0x00000588       0xbc ./MCAL/DIO_Module/Src/Dio.o
-                0x00000588                DIO_ENABLE_PULLUP
+                0x00000604       0xbc ./MCAL/DIO_Module/Src/Dio.o
+                0x00000604                DIO_ENABLE_PULLUP
  .text.DIO_DISABLE_PULLUP
-                0x00000644       0xc4 ./MCAL/DIO_Module/Src/Dio.o
-                0x00000644                DIO_DISABLE_PULLUP
+                0x000006c0       0xc4 ./MCAL/DIO_Module/Src/Dio.o
+                0x000006c0                DIO_DISABLE_PULLUP
  .text.DIO_READ_LEVEL
-                0x00000708       0x5c ./MCAL/DIO_Module/Src/Dio.o
-                0x00000708                DIO_READ_LEVEL
+                0x00000784       0x5c ./MCAL/DIO_Module/Src/Dio.o
+                0x00000784                DIO_READ_LEVEL
  .text.DIO_WRITE_STATUS
-                0x00000764       0xde ./MCAL/DIO_Module/Src/Dio.o
-                0x00000764                DIO_WRITE_STATUS
+                0x000007e0       0xde ./MCAL/DIO_Module/Src/Dio.o
+                0x000007e0                DIO_WRITE_STATUS
  .text.Dio_WriteGroup
-                0x00000842       0x4a ./MCAL/DIO_Module/Src/Dio.o
-                0x00000842                Dio_WriteGroup
+                0x000008be       0x4a ./MCAL/DIO_Module/Src/Dio.o
+                0x000008be                Dio_WriteGroup
  .text.SSD_Stop
-                0x0000088c       0x12 ./HAL/SSD/Src/SSD.o
-                0x0000088c                SSD_Stop
+                0x00000908       0x12 ./HAL/SSD/Src/SSD.o
+                0x00000908                SSD_Stop
  .text.SSD_DisplayNumber
-                0x0000089e       0x70 ./HAL/SSD/Src/SSD.o
-                0x0000089e                SSD_DisplayNumber
+                0x0000091a       0x70 ./HAL/SSD/Src/SSD.o
+                0x0000091a                SSD_DisplayNumber
  .text.SSD_Init
-                0x0000090e       0x3e ./HAL/SSD/Src/SSD.o
-                0x0000090e                SSD_Init
+                0x0000098a       0x3e ./HAL/SSD/Src/SSD.o
+                0x0000098a                SSD_Init
  .text.LED_TOGGLE
-                0x0000094c        0xa ./HAL/LED_Module/Src/LED.o
-                0x0000094c                LED_TOGGLE
- .text.LED_OFF  0x00000956        0xa ./HAL/LED_Module/Src/LED.o
-                0x00000956                LED_OFF
- .text.LED_ON   0x00000960        0xa ./HAL/LED_Module/Src/LED.o
-                0x00000960                LED_ON
+                0x000009c8        0xa ./HAL/LED_Module/Src/LED.o
+                0x000009c8                LED_TOGGLE
+ .text.LED_OFF  0x000009d2        0xa ./HAL/LED_Module/Src/LED.o
+                0x000009d2                LED_OFF
+ .text.LED_ON   0x000009dc        0xa ./HAL/LED_Module/Src/LED.o
+                0x000009dc                LED_ON
  .text.LED_Init
-                0x0000096a        0xc ./HAL/LED_Module/Src/LED.o
-                0x0000096a                LED_Init
+                0x000009e6        0xc ./HAL/LED_Module/Src/LED.o
+                0x000009e6                LED_Init
  .text.Heater_OFF
-                0x00000976        0xe ./HAL/Heater_Module/src/Heater.o
-                0x00000976                Heater_OFF
+                0x000009f2        0xe ./HAL/Heater_Module/src/Heater.o
+                0x000009f2                Heater_OFF
  .text.Heater_ON
-                0x00000984        0xa ./HAL/Heater_Module/src/Heater.o
-                0x00000984                Heater_ON
+                0x00000a00        0xa ./HAL/Heater_Module/src/Heater.o
+                0x00000a00                Heater_ON
  .text.Heater_Init
-                0x0000098e        0xc ./HAL/Heater_Module/src/Heater.o
-                0x0000098e                Heater_Init
+                0x00000a0a        0xc ./HAL/Heater_Module/src/Heater.o
+                0x00000a0a                Heater_Init
  .text.Cooler_OFF
-                0x0000099a        0xe ./HAL/Cooler_Module/src/Cooler.o
-                0x0000099a                Cooler_OFF
+                0x00000a16        0xe ./HAL/Cooler_Module/src/Cooler.o
+                0x00000a16                Cooler_OFF
  .text.Cooler_ON
-                0x000009a8        0xe ./HAL/Cooler_Module/src/Cooler.o
-                0x000009a8                Cooler_ON
+                0x00000a24        0xe ./HAL/Cooler_Module/src/Cooler.o
+                0x00000a24                Cooler_ON
  .text.Cooler_Init
-                0x000009b6        0xc ./HAL/Cooler_Module/src/Cooler.o
-                0x000009b6                Cooler_Init
+                0x00000a32        0xc ./HAL/Cooler_Module/src/Cooler.o
+                0x00000a32                Cooler_Init
  .text.Button_Pullup_Disable
-                0x000009c2       0x2c ./HAL/Button_Module/Src/Button.o
-                0x000009c2                Button_Pullup_Disable
+                0x00000a3e       0x2c ./HAL/Button_Module/Src/Button.o
+                0x00000a3e                Button_Pullup_Disable
  .text.Button_Pullup_Enable
-                0x000009ee       0x2c ./HAL/Button_Module/Src/Button.o
-                0x000009ee                Button_Pullup_Enable
+                0x00000a6a       0x2c ./HAL/Button_Module/Src/Button.o
+                0x00000a6a                Button_Pullup_Enable
  .text.Button_READ
-                0x00000a1a       0x2e ./HAL/Button_Module/Src/Button.o
-                0x00000a1a                Button_READ
+                0x00000a96       0x2e ./HAL/Button_Module/Src/Button.o
+                0x00000a96                Button_READ
  .text.Button_Init
-                0x00000a48       0x32 ./HAL/Button_Module/Src/Button.o
-                0x00000a48                Button_Init
- .text.main     0x00000a7a      0x1a6 ./Apps/main.o
-                0x00000a7a                main
- .text.libgcc   0x00000c20       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
-                0x00000c20                __udivmodqi4
- .text.libgcc   0x00000c38       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
-                0x00000c38                __udivmodhi4
- .text.libgcc   0x00000c60        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00000c60        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x00000c60                . = ALIGN (0x2)
+                0x00000ac4       0x32 ./HAL/Button_Module/Src/Button.o
+                0x00000ac4                Button_Init
+ .text.main     0x00000af6      0x1b2 ./Apps/main.o
+                0x00000af6                main
+ .text.libgcc   0x00000ca8       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                0x00000ca8                __udivmodqi4
+ .text.libgcc   0x00000cc0       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x00000cc0                __udivmodhi4
+ .text.libgcc   0x00000ce8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00000ce8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000ce8                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000c60        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00000c60                exit
-                0x00000c60                _exit
+ .fini9         0x00000ce8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00000ce8                exit
+                0x00000ce8                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -426,11 +447,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000c60        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000ce8        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000c64                _etext = .
+                0x00000cec                _etext = .
 
-.data           0x00800060        0x0 load address 0x00000c64
+.data           0x00800060        0x0 load address 0x00000cec
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -439,11 +460,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .data          0x00800060        0x0 ./Services/Restore_Temp/src/Restore_Temp.o
  .data          0x00800060        0x0 ./Services/Mode_Handler/src/Mode_Handler.o
  .data          0x00800060        0x0 ./Services/Debounce_Handler/src/Debounce_Handler.o
+ .data          0x00800060        0x0 ./MCAL/UART/Src/Uart.o
  .data          0x00800060        0x0 ./MCAL/Timer2/Src/Timer2.o
  .data          0x00800060        0x0 ./MCAL/Timer1/Src/Timer1.o
  .data          0x00800060        0x0 ./MCAL/Timer0/Src/Timer0.o
  .data          0x00800060        0x0 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
- .data          0x00800060        0x0 ./MCAL/EXTRN_ISR_Module/Src/EXTRN_ISR.o
  .data          0x00800060        0x0 ./MCAL/EEPROM/Src/Eeprom.o
  .data          0x00800060        0x0 ./MCAL/DIO_Module/Src/Dio.o
  .data          0x00800060        0x0 ./HAL/SSD/Src/SSD.o
@@ -464,7 +485,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800060                _edata = .
                 0x00800060                PROVIDE (__data_end, .)
 
-.bss            0x00800060       0x14
+.bss            0x00800060       0x3f
                 0x00800060                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -473,11 +494,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .bss           0x00800060        0x0 ./Services/Restore_Temp/src/Restore_Temp.o
  .bss           0x00800060        0x0 ./Services/Mode_Handler/src/Mode_Handler.o
  .bss           0x00800060        0x0 ./Services/Debounce_Handler/src/Debounce_Handler.o
+ .bss           0x00800060        0x0 ./MCAL/UART/Src/Uart.o
  .bss           0x00800060        0x0 ./MCAL/Timer2/Src/Timer2.o
  .bss           0x00800060        0x0 ./MCAL/Timer1/Src/Timer1.o
  .bss           0x00800060        0x0 ./MCAL/Timer0/Src/Timer0.o
  .bss           0x00800060        0x0 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
- .bss           0x00800060        0x0 ./MCAL/EXTRN_ISR_Module/Src/EXTRN_ISR.o
  .bss           0x00800060        0x0 ./MCAL/EEPROM/Src/Eeprom.o
  .bss           0x00800060        0x0 ./MCAL/DIO_Module/Src/Dio.o
  .bss           0x00800060        0x0 ./HAL/SSD/Src/SSD.o
@@ -497,28 +518,38 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800061        0x1 ./Services/Update_Temp/src/Update_Temp.o
  .bss.Temp_arr  0x00800062        0xa ./Services/Update_Temp/src/Update_Temp.o
  .bss.Counter   0x0080006c        0x1 ./Services/Debounce_Handler/src/Debounce_Handler.o
- .bss.Counter   0x0080006d        0x1 ./HAL/SSD/Src/SSD.o
+ .bss.UART_RxBuffer_Index
+                0x0080006d        0x1 ./MCAL/UART/Src/Uart.o
+                0x0080006d                UART_RxBuffer_Index
+ .bss.Rx_Buffer_Ready
+                0x0080006e        0x1 ./MCAL/UART/Src/Uart.o
+                0x0080006e                Rx_Buffer_Ready
+ .bss.Counter   0x0080006f        0x1 ./HAL/SSD/Src/SSD.o
  *(COMMON)
- COMMON         0x0080006e        0x3 ./Services/Update_Temp/src/Update_Temp.o
-                0x0080006e                Blink_Status
-                0x0080006f                Curr_Temp
-                0x00800070                Update_Temp_En
- COMMON         0x00800071        0x1 ./Services/Store_Temp/src/Store_Temp.o
-                0x00800071                Des_Temp
- COMMON         0x00800072        0x1 ./Services/Mode_Handler/src/Mode_Handler.o
-                0x00800072                Mode
- COMMON         0x00800073        0x1 ./Services/Debounce_Handler/src/Debounce_Handler.o
-                0x00800073                ButtonEnable
-                0x00800074                PROVIDE (__bss_end, .)
-                0x00000c64                __data_load_start = LOADADDR (.data)
-                0x00000c64                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800070        0x3 ./Services/Update_Temp/src/Update_Temp.o
+                0x00800070                Blink_Status
+                0x00800071                Curr_Temp
+                0x00800072                Update_Temp_En
+ COMMON         0x00800073        0x1 ./Services/Store_Temp/src/Store_Temp.o
+                0x00800073                Des_Temp
+ COMMON         0x00800074        0x1 ./Services/Mode_Handler/src/Mode_Handler.o
+                0x00800074                Mode
+ COMMON         0x00800075        0x1 ./Services/Debounce_Handler/src/Debounce_Handler.o
+                0x00800075                ButtonEnable
+ COMMON         0x00800076       0x29 ./MCAL/UART/Src/Uart.o
+                0x00800076                Num
+                0x00800077                UART_RxBuffer
+                0x0080008b                UART_TxBuffer
+                0x0080009f                PROVIDE (__bss_end, .)
+                0x00000cec                __data_load_start = LOADADDR (.data)
+                0x00000cec                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800074        0x0
-                0x00800074                PROVIDE (__noinit_start, .)
+.noinit         0x0080009f        0x0
+                0x0080009f                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800074                PROVIDE (__noinit_end, .)
-                0x00800074                _end = .
-                0x00800074                PROVIDE (__heap_start, .)
+                0x0080009f                PROVIDE (__noinit_end, .)
+                0x0080009f                _end = .
+                0x0080009f                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -536,47 +567,47 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x2f58
+.stab           0x00000000     0x3228
  *(.stab)
- .stab          0x00000000      0x630 ./Services/Update_Temp/src/Update_Temp.o
- .stab          0x00000630      0x138 ./Services/Store_Temp/src/Store_Temp.o
+ .stab          0x00000000      0x678 ./Services/Update_Temp/src/Update_Temp.o
+ .stab          0x00000678      0x138 ./Services/Store_Temp/src/Store_Temp.o
                                 0x1c8 (size before relaxing)
- .stab          0x00000768      0x174 ./Services/Restore_Temp/src/Restore_Temp.o
+ .stab          0x000007b0      0x174 ./Services/Restore_Temp/src/Restore_Temp.o
                                 0x204 (size before relaxing)
- .stab          0x000008dc      0x258 ./Services/Mode_Handler/src/Mode_Handler.o
+ .stab          0x00000924      0x258 ./Services/Mode_Handler/src/Mode_Handler.o
                                 0x4a4 (size before relaxing)
- .stab          0x00000b34      0x264 ./Services/Debounce_Handler/src/Debounce_Handler.o
+ .stab          0x00000b7c      0x264 ./Services/Debounce_Handler/src/Debounce_Handler.o
                                 0x4b0 (size before relaxing)
- .stab          0x00000d98      0x288 ./MCAL/Timer2/Src/Timer2.o
+ .stab          0x00000de0      0x348 ./MCAL/UART/Src/Uart.o
+                                0x594 (size before relaxing)
+ .stab          0x00001128      0x288 ./MCAL/Timer2/Src/Timer2.o
                                 0x348 (size before relaxing)
- .stab          0x00001020      0x2a0 ./MCAL/Timer1/Src/Timer1.o
+ .stab          0x000013b0      0x2a0 ./MCAL/Timer1/Src/Timer1.o
                                 0x360 (size before relaxing)
- .stab          0x000012c0      0x288 ./MCAL/Timer0/Src/Timer0.o
+ .stab          0x00001650      0x288 ./MCAL/Timer0/Src/Timer0.o
                                 0x348 (size before relaxing)
- .stab          0x00001548      0x174 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
+ .stab          0x000018d8      0x174 ./MCAL/Global_Inerrupt/Src/Glbl_Int.o
                                 0x204 (size before relaxing)
- .stab          0x000016bc       0xd8 ./MCAL/EXTRN_ISR_Module/Src/EXTRN_ISR.o
-                                 0xe4 (size before relaxing)
- .stab          0x00001794      0x1d4 ./MCAL/EEPROM/Src/Eeprom.o
+ .stab          0x00001a4c      0x1d4 ./MCAL/EEPROM/Src/Eeprom.o
                                 0x264 (size before relaxing)
- .stab          0x00001968      0x5b8 ./MCAL/DIO_Module/Src/Dio.o
+ .stab          0x00001c20      0x5b8 ./MCAL/DIO_Module/Src/Dio.o
                                 0x648 (size before relaxing)
- .stab          0x00001f20      0x270 ./HAL/SSD/Src/SSD.o
+ .stab          0x000021d8      0x270 ./HAL/SSD/Src/SSD.o
                                 0x378 (size before relaxing)
- .stab          0x00002190      0x1d4 ./HAL/LED_Module/Src/LED.o
+ .stab          0x00002448      0x1d4 ./HAL/LED_Module/Src/LED.o
                                 0x2dc (size before relaxing)
- .stab          0x00002364      0x1b0 ./HAL/Heater_Module/src/Heater.o
+ .stab          0x0000261c      0x1b0 ./HAL/Heater_Module/src/Heater.o
                                 0x2b8 (size before relaxing)
- .stab          0x00002514      0x1bc ./HAL/Cooler_Module/src/Cooler.o
+ .stab          0x000027cc      0x1bc ./HAL/Cooler_Module/src/Cooler.o
                                 0x2c4 (size before relaxing)
- .stab          0x000026d0      0x300 ./HAL/Button_Module/Src/Button.o
+ .stab          0x00002988      0x300 ./HAL/Button_Module/Src/Button.o
                                 0x408 (size before relaxing)
- .stab          0x000029d0      0x588 ./Apps/main.o
-                                0x960 (size before relaxing)
+ .stab          0x00002c88      0x5a0 ./Apps/main.o
+                                0x978 (size before relaxing)
 
-.stabstr        0x00000000     0x1bd3
+.stabstr        0x00000000     0x1d39
  *(.stabstr)
- .stabstr       0x00000000     0x1bd3 ./Services/Update_Temp/src/Update_Temp.o
+ .stabstr       0x00000000     0x1d39 ./Services/Update_Temp/src/Update_Temp.o
 
 .stab.excl
  *(.stab.excl)

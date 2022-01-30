@@ -19,7 +19,7 @@ void loop(void) {
     int p=temp;
     Serial.write(p);
   }
-  delay(50);
+  delay(90);
 }
  
 bool ds18b20_start(){

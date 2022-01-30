@@ -1,10 +1,10 @@
-/*
- * Std_Types.h
- *
- *  Created on: Nov 13, 2021
- *      Author: HatemSamir
- */
-
+//---------------------------------------------------------------------//
+//Created:		Nov 12, 2022
+//Author: 		HatemSamirElsaid
+//Type:			Library
+//Description:
+//	contain more clear naming of main data types
+//---------------------------------------------------------------------//
 #ifndef STD_TYPES_H_
 #define STD_TYPES_H_
 

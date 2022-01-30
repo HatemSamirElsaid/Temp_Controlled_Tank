@@ -1,9 +1,8 @@
-/*
- * Button.h
- *
- *  Created on: Nov 19, 2021
- *      Author: HatemSamir
- */
+//---------------------------------------------------------------------//
+//Created:		Nov 19, 2022
+//Author: 		HatemSamirElsaid
+//Type:			Module
+//---------------------------------------------------------------------//
 
 #ifndef HAL_BUTTON_H_
 #define HAL_BUTTON_H_

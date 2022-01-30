@@ -1,9 +1,10 @@
-/*
- * Bit_Math.h
- *
- *  Created on: Nov 12, 2021
- *      Author: HatemSamir
- */
+//---------------------------------------------------------------------//
+//Created:		Nov 12, 2022
+//Author: 		HatemSamirElsaid
+//Type:			Library
+//Description:
+//	contain main bit logical operations
+//---------------------------------------------------------------------//
 
 #ifndef BIT_MATH_H_
 #define BIT_MATH_H_

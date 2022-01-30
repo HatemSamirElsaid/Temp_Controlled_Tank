@@ -1,9 +1,8 @@
-/*
- * Dio_Types.h
- *
- *  Created on: Nov 19, 2021
- *      Author: HatemSamir
- */
+//---------------------------------------------------------------------//
+//Created:		Nov 19, 2022
+//Author: 		HatemSamirElsaid
+//Type:			Module
+//---------------------------------------------------------------------//
 
 #ifndef MCAL_DIO_TYPES_H_
 #define MCAL_DIO_TYPES_H_

@@ -2,7 +2,7 @@
 //Created:		Jan 17, 2022
 //Author: 		HatemSamirElsaid
 //Type:			Service
-//Dependences:	Timer2_Module
+//Dependences:	Timer2_Module,UART_Module
 //Description:
 //	Timer2 is used to take reading from the sensor every 100ms and used
 //	to satisfy SSD and LED blinking requirements of blinking every 1sec

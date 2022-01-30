@@ -2,7 +2,7 @@
 //Created:		Jan 17, 2022
 //Author: 		HatemSamirElsaid
 //Type:			Service
-//Dependences:	Timer2_Module
+//Dependences:	Timer2_Module,UART_Module
 //Description:
 //	Timer2 is used to take reading from the sensor every 100ms and used
 //	to satisfy SSD and LED blinking requirements of blinking every 1sec
@@ -15,7 +15,7 @@ static u8 T_Counter = 0;
 static u8 SSD_Counter = 0;
 static u8 Temp_arr[10] = {0,0,0,0,0,0,0,0,0,0};
 
-
+extern u8 Num;
 
 
 ISR (TIMER2_OVF_vect){
@@ -42,7 +42,7 @@ void Update_Temp(void){
 		}else{
 			SSD_Counter++;
 		}
-		u8 Temp = 50;
+		u8 Temp = Num;
 		for(int i=0;i<10;i++){
 			if(i==0){
 				Var1 = Temp_arr[i];
