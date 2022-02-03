@@ -21,17 +21,17 @@ int main (){
 	/*--------------------------------------------------------------------------------------------------------------*/
 	/*------------------------------------------System Status Initialization----------------------------------------*/
 	/*--------------------------------------------------------------------------------------------------------------*/
-	Switch SystemStatus = OFF;
-	ButtonEnable = TRUE;
-	Mode = Temp_Control;
-	Curr_Temp = 0;
-	Restore_Temp();
-	Update_Temp_En = TRUE;
-	Blink_Status = FALSE;
-	Timer2_Start(TIMER2_1024_);
-	Timer2_EnableInterrupt();
-	Enable_Gl_Int();
-	UART_Init(UART_BAUDRATE_9600);
+	Switch SystemStatus = OFF;	//system Is initially Turned Off.
+	ButtonEnable = TRUE;		//Used to handle Debouncing.
+	Mode = Temp_Control;		//initialize System to be in Control Mode.
+	Curr_Temp = 0;				//Initialize Current Temperature.
+	Restore_Temp();				//Retrieve Desired temperature from the EEPROM.
+	Update_Temp_En = TRUE;		//Used To maintain sensor reading periodicity.
+	Blink_Status = FALSE;		//Used To follow LED and SSD Blinking Requirements.
+	Timer2_Start(TIMER2_1024_);	//Initiate sensor reading task.
+	Timer2_EnableInterrupt();	//Enable sensor reading task through Interrupt.
+	Enable_Gl_Int();			//Enable Global Interrupt.
+	UART_Init(UART_BAUDRATE_9600);	//UART Protocol Start.
 	/*--------------------------------------------------------------------------------------------------------------*/
 	/*------------------------------------------System Loop---------------------------------------------------------*/
 	/*--------------------------------------------------------------------------------------------------------------*/

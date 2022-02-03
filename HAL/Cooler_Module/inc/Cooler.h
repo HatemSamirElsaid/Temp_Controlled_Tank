@@ -13,9 +13,8 @@
 #include "LED.h"
 
 //Function Prototypes
-void Cooler_Init();
-void Cooler_ON();
-void Cooler_OFF();
-
+void Cooler_Init();	//Initialize Cooler pin as an output
+void Cooler_ON();	//Write 1 at the enable pin of the Cooler relay
+void Cooler_OFF();	//Write 0 at the enable pin of the Cooler relay
 
 #endif /* HAL_COOLER_MODULE_INC_COOLER_H_ */
